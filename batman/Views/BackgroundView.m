@@ -38,8 +38,8 @@
 }
 
 - (id)initializeView {
-    bgImage1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"d_apri_bg.png"]];
-    bgImage2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"d_apri_bg.png"]];
+    bgImage1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg-road.png"]];
+    bgImage2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"bg-road.png"]];
     
     bgX1 = 0;
     bgY1 = 0;

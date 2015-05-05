@@ -1,497 +1,1392 @@
-// !$*UTF8*$!
-{
-	archiveVersion = 1;
-	classes = {
-	};
-	objectVersion = 46;
-	objects = {
-
-/* Begin PBXBuildFile section */
-		1F9273D11AF4889D009ED19B /* UAProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9273D01AF4889D009ED19B /* UAProgressView.m */; };
-		1F9F77BF1AAAB4B200050BD0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F77BE1AAAB4B200050BD0 /* main.m */; };
-		1F9F77C21AAAB4B200050BD0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F77C11AAAB4B200050BD0 /* AppDelegate.m */; };
-		1F9F77C51AAAB4B200050BD0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F77C41AAAB4B200050BD0 /* ViewController.m */; };
-		1F9F77C81AAAB4B200050BD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F9F77C61AAAB4B200050BD0 /* Main.storyboard */; };
-		1F9F77CA1AAAB4B200050BD0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F9F77C91AAAB4B200050BD0 /* Images.xcassets */; };
-		1F9F77CD1AAAB4B300050BD0 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F9F77CB1AAAB4B300050BD0 /* LaunchScreen.xib */; };
-		1F9F77D91AAAB4B300050BD0 /* batmanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F9F77D81AAAB4B300050BD0 /* batmanTests.m */; };
-		1F9F77E61AAAB66600050BD0 /* bck@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F9F77E41AAAB66600050BD0 /* bck@2x.png */; };
-		1F9F77EB1AAACCEA00050BD0 /* batman_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F9F77E91AAACCEA00050BD0 /* batman_logo.png */; };
-		1F9F77EC1AAACCEA00050BD0 /* batman_logo_new.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F9F77EA1AAACCEA00050BD0 /* batman_logo_new.png */; };
-		1FCD19681ACFA7C100CF6C0D /* bomb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FCD19651ACFA7C100CF6C0D /* bomb.mp3 */; };
-		1FCD19691ACFA7C100CF6C0D /* gunshot3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FCD19661ACFA7C100CF6C0D /* gunshot3.mp3 */; };
-		1FCD196A1ACFA7C100CF6C0D /* hit_axe1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1FCD19671ACFA7C100CF6C0D /* hit_axe1.mp3 */; };
-		1FCD196D1ACFA7D400CF6C0D /* d_apri_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FCD196B1ACFA7D400CF6C0D /* d_apri_bg.png */; };
-		1FCD196E1ACFA7D400CF6C0D /* maru.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FCD196C1ACFA7D400CF6C0D /* maru.png */; };
-		1FCD19741ACFAF0D00CF6C0D /* BackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FCD19731ACFAF0D00CF6C0D /* BackgroundView.m */; };
-		1FCD19801ACFC61600CF6C0D /* HPView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FCD197F1ACFC61600CF6C0D /* HPView.m */; };
-/* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		1F9F77D31AAAB4B300050BD0 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 1F9F77B11AAAB4B200050BD0 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 1F9F77B81AAAB4B200050BD0;
-			remoteInfo = batman;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXFileReference section */
-		1F9273CF1AF4889D009ED19B /* UAProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UAProgressView.h; sourceTree = "<group>"; };
-		1F9273D01AF4889D009ED19B /* UAProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UAProgressView.m; sourceTree = "<group>"; };
-		1F9F77B91AAAB4B200050BD0 /* batman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = batman.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F9F77BD1AAAB4B200050BD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F9F77BE1AAAB4B200050BD0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		1F9F77C01AAAB4B200050BD0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		1F9F77C11AAAB4B200050BD0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		1F9F77C31AAAB4B200050BD0 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		1F9F77C41AAAB4B200050BD0 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		1F9F77C71AAAB4B200050BD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		1F9F77C91AAAB4B200050BD0 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		1F9F77CC1AAAB4B300050BD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		1F9F77D21AAAB4B300050BD0 /* batmanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = batmanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F9F77D71AAAB4B300050BD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1F9F77D81AAAB4B300050BD0 /* batmanTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = batmanTests.m; sourceTree = "<group>"; };
-		1F9F77E41AAAB66600050BD0 /* bck@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bck@2x.png"; sourceTree = "<group>"; };
-		1F9F77E91AAACCEA00050BD0 /* batman_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = batman_logo.png; sourceTree = "<group>"; };
-		1F9F77EA1AAACCEA00050BD0 /* batman_logo_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = batman_logo_new.png; sourceTree = "<group>"; };
-		1FCD19651ACFA7C100CF6C0D /* bomb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bomb.mp3; sourceTree = "<group>"; };
-		1FCD19661ACFA7C100CF6C0D /* gunshot3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = gunshot3.mp3; sourceTree = "<group>"; };
-		1FCD19671ACFA7C100CF6C0D /* hit_axe1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = hit_axe1.mp3; sourceTree = "<group>"; };
-		1FCD196B1ACFA7D400CF6C0D /* d_apri_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = d_apri_bg.png; sourceTree = "<group>"; };
-		1FCD196C1ACFA7D400CF6C0D /* maru.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = maru.png; sourceTree = "<group>"; };
-		1FCD19721ACFAF0D00CF6C0D /* BackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BackgroundView.h; path = ../BackgroundView.h; sourceTree = "<group>"; };
-		1FCD19731ACFAF0D00CF6C0D /* BackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BackgroundView.m; path = ../BackgroundView.m; sourceTree = "<group>"; };
-		1FCD197E1ACFC61600CF6C0D /* HPView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HPView.h; sourceTree = "<group>"; };
-		1FCD197F1ACFC61600CF6C0D /* HPView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HPView.m; sourceTree = "<group>"; };
-/* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		1F9F77B61AAAB4B200050BD0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1F9F77CF1AAAB4B300050BD0 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
-/* Begin PBXGroup section */
-		1F9F77B01AAAB4B200050BD0 = {
-			isa = PBXGroup;
-			children = (
-				1F9F77BB1AAAB4B200050BD0 /* batman */,
-				1F9F77D51AAAB4B300050BD0 /* batmanTests */,
-				1F9F77BA1AAAB4B200050BD0 /* Products */,
-			);
-			sourceTree = "<group>";
-		};
-		1F9F77BA1AAAB4B200050BD0 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				1F9F77B91AAAB4B200050BD0 /* batman.app */,
-				1F9F77D21AAAB4B300050BD0 /* batmanTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		1F9F77BB1AAAB4B200050BD0 /* batman */ = {
-			isa = PBXGroup;
-			children = (
-				1F9273CF1AF4889D009ED19B /* UAProgressView.h */,
-				1F9273D01AF4889D009ED19B /* UAProgressView.m */,
-				1FCD197E1ACFC61600CF6C0D /* HPView.h */,
-				1FCD197F1ACFC61600CF6C0D /* HPView.m */,
-				1FCD19721ACFAF0D00CF6C0D /* BackgroundView.h */,
-				1FCD19731ACFAF0D00CF6C0D /* BackgroundView.m */,
-				1FCD19641ACFA79E00CF6C0D /* sound */,
-				1F9F77E21AAAB61E00050BD0 /* images */,
-				1F9F77C01AAAB4B200050BD0 /* AppDelegate.h */,
-				1F9F77C11AAAB4B200050BD0 /* AppDelegate.m */,
-				1F9F77C31AAAB4B200050BD0 /* ViewController.h */,
-				1F9F77C41AAAB4B200050BD0 /* ViewController.m */,
-				1F9F77C61AAAB4B200050BD0 /* Main.storyboard */,
-				1F9F77C91AAAB4B200050BD0 /* Images.xcassets */,
-				1F9F77CB1AAAB4B300050BD0 /* LaunchScreen.xib */,
-				1F9F77BC1AAAB4B200050BD0 /* Supporting Files */,
-			);
-			path = batman;
-			sourceTree = "<group>";
-		};
-		1F9F77BC1AAAB4B200050BD0 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				1F9F77BD1AAAB4B200050BD0 /* Info.plist */,
-				1F9F77BE1AAAB4B200050BD0 /* main.m */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		1F9F77D51AAAB4B300050BD0 /* batmanTests */ = {
-			isa = PBXGroup;
-			children = (
-				1F9F77D81AAAB4B300050BD0 /* batmanTests.m */,
-				1F9F77D61AAAB4B300050BD0 /* Supporting Files */,
-			);
-			path = batmanTests;
-			sourceTree = "<group>";
-		};
-		1F9F77D61AAAB4B300050BD0 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				1F9F77D71AAAB4B300050BD0 /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		1F9F77E21AAAB61E00050BD0 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				1FCD196B1ACFA7D400CF6C0D /* d_apri_bg.png */,
-				1FCD196C1ACFA7D400CF6C0D /* maru.png */,
-				1F9F77E91AAACCEA00050BD0 /* batman_logo.png */,
-				1F9F77EA1AAACCEA00050BD0 /* batman_logo_new.png */,
-				1F9F77E41AAAB66600050BD0 /* bck@2x.png */,
-			);
-			name = images;
-			sourceTree = "<group>";
-		};
-		1FCD19641ACFA79E00CF6C0D /* sound */ = {
-			isa = PBXGroup;
-			children = (
-				1FCD19651ACFA7C100CF6C0D /* bomb.mp3 */,
-				1FCD19661ACFA7C100CF6C0D /* gunshot3.mp3 */,
-				1FCD19671ACFA7C100CF6C0D /* hit_axe1.mp3 */,
-			);
-			name = sound;
-			sourceTree = "<group>";
-		};
-/* End PBXGroup section */
-
-/* Begin PBXNativeTarget section */
-		1F9F77B81AAAB4B200050BD0 /* batman */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1F9F77DC1AAAB4B300050BD0 /* Build configuration list for PBXNativeTarget "batman" */;
-			buildPhases = (
-				1F9F77B51AAAB4B200050BD0 /* Sources */,
-				1F9F77B61AAAB4B200050BD0 /* Frameworks */,
-				1F9F77B71AAAB4B200050BD0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = batman;
-			productName = batman;
-			productReference = 1F9F77B91AAAB4B200050BD0 /* batman.app */;
-			productType = "com.apple.product-type.application";
-		};
-		1F9F77D11AAAB4B300050BD0 /* batmanTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 1F9F77DF1AAAB4B300050BD0 /* Build configuration list for PBXNativeTarget "batmanTests" */;
-			buildPhases = (
-				1F9F77CE1AAAB4B300050BD0 /* Sources */,
-				1F9F77CF1AAAB4B300050BD0 /* Frameworks */,
-				1F9F77D01AAAB4B300050BD0 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				1F9F77D41AAAB4B300050BD0 /* PBXTargetDependency */,
-			);
-			name = batmanTests;
-			productName = batmanTests;
-			productReference = 1F9F77D21AAAB4B300050BD0 /* batmanTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-/* End PBXNativeTarget section */
-
-/* Begin PBXProject section */
-		1F9F77B11AAAB4B200050BD0 /* Project object */ = {
-			isa = PBXProject;
-			attributes = {
-				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = "山口 大輔";
-				TargetAttributes = {
-					1F9F77B81AAAB4B200050BD0 = {
-						CreatedOnToolsVersion = 6.1;
-					};
-					1F9F77D11AAAB4B300050BD0 = {
-						CreatedOnToolsVersion = 6.1;
-						TestTargetID = 1F9F77B81AAAB4B200050BD0;
-					};
-				};
-			};
-			buildConfigurationList = 1F9F77B41AAAB4B200050BD0 /* Build configuration list for PBXProject "batman" */;
-			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
-			hasScannedForEncodings = 0;
-			knownRegions = (
-				en,
-				Base,
-			);
-			mainGroup = 1F9F77B01AAAB4B200050BD0;
-			productRefGroup = 1F9F77BA1AAAB4B200050BD0 /* Products */;
-			projectDirPath = "";
-			projectRoot = "";
-			targets = (
-				1F9F77B81AAAB4B200050BD0 /* batman */,
-				1F9F77D11AAAB4B300050BD0 /* batmanTests */,
-			);
-		};
-/* End PBXProject section */
-
-/* Begin PBXResourcesBuildPhase section */
-		1F9F77B71AAAB4B200050BD0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1FCD196A1ACFA7C100CF6C0D /* hit_axe1.mp3 in Resources */,
-				1F9F77EC1AAACCEA00050BD0 /* batman_logo_new.png in Resources */,
-				1FCD196E1ACFA7D400CF6C0D /* maru.png in Resources */,
-				1F9F77C81AAAB4B200050BD0 /* Main.storyboard in Resources */,
-				1F9F77E61AAAB66600050BD0 /* bck@2x.png in Resources */,
-				1FCD19681ACFA7C100CF6C0D /* bomb.mp3 in Resources */,
-				1F9F77CD1AAAB4B300050BD0 /* LaunchScreen.xib in Resources */,
-				1FCD19691ACFA7C100CF6C0D /* gunshot3.mp3 in Resources */,
-				1FCD196D1ACFA7D400CF6C0D /* d_apri_bg.png in Resources */,
-				1F9F77CA1AAAB4B200050BD0 /* Images.xcassets in Resources */,
-				1F9F77EB1AAACCEA00050BD0 /* batman_logo.png in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1F9F77D01AAAB4B300050BD0 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
-/* Begin PBXSourcesBuildPhase section */
-		1F9F77B51AAAB4B200050BD0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1F9F77C51AAAB4B200050BD0 /* ViewController.m in Sources */,
-				1F9F77C21AAAB4B200050BD0 /* AppDelegate.m in Sources */,
-				1FCD19801ACFC61600CF6C0D /* HPView.m in Sources */,
-				1FCD19741ACFAF0D00CF6C0D /* BackgroundView.m in Sources */,
-				1F9F77BF1AAAB4B200050BD0 /* main.m in Sources */,
-				1F9273D11AF4889D009ED19B /* UAProgressView.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		1F9F77CE1AAAB4B300050BD0 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				1F9F77D91AAAB4B300050BD0 /* batmanTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		1F9F77D41AAAB4B300050BD0 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 1F9F77B81AAAB4B200050BD0 /* batman */;
-			targetProxy = 1F9F77D31AAAB4B300050BD0 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		1F9F77C61AAAB4B200050BD0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1F9F77C71AAAB4B200050BD0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		1F9F77CB1AAAB4B300050BD0 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1F9F77CC1AAAB4B300050BD0 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
-/* Begin XCBuildConfiguration section */
-		1F9F77DA1AAAB4B300050BD0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		1F9F77DB1AAAB4B300050BD0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = iphoneos;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		1F9F77DD1AAAB4B300050BD0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = batman/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Debug;
-		};
-		1F9F77DE1AAAB4B300050BD0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				INFOPLIST_FILE = batman/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = 1;
-			};
-			name = Release;
-		};
-		1F9F77E01AAAB4B300050BD0 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = batmanTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/batman.app/batman";
-			};
-			name = Debug;
-		};
-		1F9F77E11AAAB4B300050BD0 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = batmanTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/batman.app/batman";
-			};
-			name = Release;
-		};
-/* End XCBuildConfiguration section */
-
-/* Begin XCConfigurationList section */
-		1F9F77B41AAAB4B200050BD0 /* Build configuration list for PBXProject "batman" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1F9F77DA1AAAB4B300050BD0 /* Debug */,
-				1F9F77DB1AAAB4B300050BD0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1F9F77DC1AAAB4B300050BD0 /* Build configuration list for PBXNativeTarget "batman" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1F9F77DD1AAAB4B300050BD0 /* Debug */,
-				1F9F77DE1AAAB4B300050BD0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		1F9F77DF1AAAB4B300050BD0 /* Build configuration list for PBXNativeTarget "batmanTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				1F9F77E01AAAB4B300050BD0 /* Debug */,
-				1F9F77E11AAAB4B300050BD0 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-/* End XCConfigurationList section */
-	};
-	rootObject = 1F9F77B11AAAB4B200050BD0 /* Project object */;
-}
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>archiveVersion</key>
+	<string>1</string>
+	<key>classes</key>
+	<dict/>
+	<key>objectVersion</key>
+	<string>46</string>
+	<key>objects</key>
+	<dict>
+		<key>1F0B974A1AF9386B005A297D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>EditViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F0B974B1AF9386B005A297D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>EditViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F0B974C1AF9386B005A297D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1F0B974B1AF9386B005A297D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1F0B974D1AF93A75005A297D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>TopViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F0B974E1AF93A75005A297D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>TopViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F0B974F1AF93A75005A297D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1F0B974E1AF93A75005A297D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1F0B97531AF94270005A297D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>Person.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F0B97541AF94270005A297D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>Person.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F0B97551AF94270005A297D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1F0B97541AF94270005A297D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1F0B97561AF9471B005A297D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.jpeg</string>
+			<key>path</key>
+			<string>img_joker.jpg</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F0B97571AF9471B005A297D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1F0B97561AF9471B005A297D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1F0B97581AF94C53005A297D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.jpeg</string>
+			<key>path</key>
+			<string>a-watanabe.jpg</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F0B97591AF94C53005A297D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1F0B97581AF94C53005A297D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1F9273CF1AF4889D009ED19B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>UAProgressView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9273D01AF4889D009ED19B</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>UAProgressView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9273D11AF4889D009ED19B</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1F9273D01AF4889D009ED19B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1F9F77B01AAAB4B200050BD0</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1F9F77BB1AAAB4B200050BD0</string>
+				<string>1F9F77D51AAAB4B300050BD0</string>
+				<string>1F9F77BA1AAAB4B200050BD0</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77B11AAAB4B200050BD0</key>
+		<dict>
+			<key>attributes</key>
+			<dict>
+				<key>LastUpgradeCheck</key>
+				<string>0610</string>
+				<key>ORGANIZATIONNAME</key>
+				<string>&#23665;&#21475; &#22823;&#36628;</string>
+				<key>TargetAttributes</key>
+				<dict>
+					<key>1F9F77B81AAAB4B200050BD0</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>6.1</string>
+					</dict>
+					<key>1F9F77D11AAAB4B300050BD0</key>
+					<dict>
+						<key>CreatedOnToolsVersion</key>
+						<string>6.1</string>
+						<key>TestTargetID</key>
+						<string>1F9F77B81AAAB4B200050BD0</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>buildConfigurationList</key>
+			<string>1F9F77B41AAAB4B200050BD0</string>
+			<key>compatibilityVersion</key>
+			<string>Xcode 3.2</string>
+			<key>developmentRegion</key>
+			<string>English</string>
+			<key>hasScannedForEncodings</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXProject</string>
+			<key>knownRegions</key>
+			<array>
+				<string>en</string>
+				<string>Base</string>
+			</array>
+			<key>mainGroup</key>
+			<string>1F9F77B01AAAB4B200050BD0</string>
+			<key>productRefGroup</key>
+			<string>1F9F77BA1AAAB4B200050BD0</string>
+			<key>projectDirPath</key>
+			<string></string>
+			<key>projectReferences</key>
+			<array/>
+			<key>projectRoot</key>
+			<string></string>
+			<key>targets</key>
+			<array>
+				<string>1F9F77B81AAAB4B200050BD0</string>
+				<string>1F9F77D11AAAB4B300050BD0</string>
+			</array>
+		</dict>
+		<key>1F9F77B41AAAB4B200050BD0</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>1F9F77DA1AAAB4B300050BD0</string>
+				<string>1F9F77DB1AAAB4B300050BD0</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>1F9F77B51AAAB4B200050BD0</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>1FBF7FBD1AF92BAE00D9AD9F</string>
+				<string>1F0B97551AF94270005A297D</string>
+				<string>1F9F77C51AAAB4B200050BD0</string>
+				<string>1F9F77C21AAAB4B200050BD0</string>
+				<string>1FCD19801ACFC61600CF6C0D</string>
+				<string>1F0B974C1AF9386B005A297D</string>
+				<string>1FCD19741ACFAF0D00CF6C0D</string>
+				<string>1F9F77BF1AAAB4B200050BD0</string>
+				<string>1F9273D11AF4889D009ED19B</string>
+				<string>1F0B974F1AF93A75005A297D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>1F9F77B61AAAB4B200050BD0</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>1F9F77B71AAAB4B200050BD0</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>1FCD196A1ACFA7C100CF6C0D</string>
+				<string>1FBF7FB21AF903BF00D9AD9F</string>
+				<string>1F0B97591AF94C53005A297D</string>
+				<string>1F9F77EC1AAACCEA00050BD0</string>
+				<string>1FBF7FB61AF903CD00D9AD9F</string>
+				<string>1FCD196E1ACFA7D400CF6C0D</string>
+				<string>1F9F77C81AAAB4B200050BD0</string>
+				<string>1FCD19681ACFA7C100CF6C0D</string>
+				<string>1F0B97571AF9471B005A297D</string>
+				<string>1F9F77CD1AAAB4B300050BD0</string>
+				<string>1FCD19691ACFA7C100CF6C0D</string>
+				<string>1FCD196D1ACFA7D400CF6C0D</string>
+				<string>1FBF7FB51AF903CD00D9AD9F</string>
+				<string>1F9F77CA1AAAB4B200050BD0</string>
+				<string>1F9F77EB1AAACCEA00050BD0</string>
+			</array>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>1F9F77B81AAAB4B200050BD0</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>1F9F77DC1AAAB4B300050BD0</string>
+			<key>buildPhases</key>
+			<array>
+				<string>1F9F77B51AAAB4B200050BD0</string>
+				<string>1F9F77B61AAAB4B200050BD0</string>
+				<string>1F9F77B71AAAB4B200050BD0</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>batman</string>
+			<key>productName</key>
+			<string>batman</string>
+			<key>productReference</key>
+			<string>1F9F77B91AAAB4B200050BD0</string>
+			<key>productType</key>
+			<string>com.apple.product-type.application</string>
+		</dict>
+		<key>1F9F77B91AAAB4B200050BD0</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.application</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>batman.app</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>1F9F77BA1AAAB4B200050BD0</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1F9F77B91AAAB4B200050BD0</string>
+				<string>1F9F77D21AAAB4B300050BD0</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77BB1AAAB4B200050BD0</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1FBF7FBA1AF92A5000D9AD9F</string>
+				<string>1FBF7FB91AF9299100D9AD9F</string>
+				<string>1FBF7FB81AF9298700D9AD9F</string>
+				<string>1FBF7FB71AF9297000D9AD9F</string>
+				<string>1FCD19641ACFA79E00CF6C0D</string>
+				<string>1F9F77E21AAAB61E00050BD0</string>
+				<string>1F9F77C01AAAB4B200050BD0</string>
+				<string>1F9F77C11AAAB4B200050BD0</string>
+				<string>1F9F77C61AAAB4B200050BD0</string>
+				<string>1F9F77C91AAAB4B200050BD0</string>
+				<string>1F9F77CB1AAAB4B300050BD0</string>
+				<string>1F9F77BC1AAAB4B200050BD0</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>batman</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77BC1AAAB4B200050BD0</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1F9F77BD1AAAB4B200050BD0</string>
+				<string>1F9F77BE1AAAB4B200050BD0</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77BD1AAAB4B200050BD0</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77BE1AAAB4B200050BD0</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>main.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77BF1AAAB4B200050BD0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1F9F77BE1AAAB4B200050BD0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1F9F77C01AAAB4B200050BD0</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>AppDelegate.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77C11AAAB4B200050BD0</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>AppDelegate.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77C21AAAB4B200050BD0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1F9F77C11AAAB4B200050BD0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1F9F77C31AAAB4B200050BD0</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>GameViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77C41AAAB4B200050BD0</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>GameViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77C51AAAB4B200050BD0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1F9F77C41AAAB4B200050BD0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1F9F77C61AAAB4B200050BD0</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1F9F77C71AAAB4B200050BD0</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>Main.storyboard</string>
+			<key>path</key>
+			<string>.</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77C71AAAB4B200050BD0</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.storyboard</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/Main.storyboard</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77C81AAAB4B200050BD0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1F9F77C61AAAB4B200050BD0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1F9F77C91AAAB4B200050BD0</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>folder.assetcatalog</string>
+			<key>path</key>
+			<string>Images.xcassets</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77CA1AAAB4B200050BD0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1F9F77C91AAAB4B200050BD0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1F9F77CB1AAAB4B300050BD0</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1F9F77CC1AAAB4B300050BD0</string>
+			</array>
+			<key>isa</key>
+			<string>PBXVariantGroup</string>
+			<key>name</key>
+			<string>LaunchScreen.xib</string>
+			<key>path</key>
+			<string>.</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77CC1AAAB4B300050BD0</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>file.xib</string>
+			<key>name</key>
+			<string>Base</string>
+			<key>path</key>
+			<string>Base.lproj/LaunchScreen.xib</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77CD1AAAB4B300050BD0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1F9F77CB1AAAB4B300050BD0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1F9F77CE1AAAB4B300050BD0</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>1F9F77D91AAAB4B300050BD0</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>1F9F77CF1AAAB4B300050BD0</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>1F9F77D01AAAB4B300050BD0</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXResourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>1F9F77D11AAAB4B300050BD0</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>1F9F77DF1AAAB4B300050BD0</string>
+			<key>buildPhases</key>
+			<array>
+				<string>1F9F77CE1AAAB4B300050BD0</string>
+				<string>1F9F77CF1AAAB4B300050BD0</string>
+				<string>1F9F77D01AAAB4B300050BD0</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>1F9F77D41AAAB4B300050BD0</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>batmanTests</string>
+			<key>productName</key>
+			<string>batmanTests</string>
+			<key>productReference</key>
+			<string>1F9F77D21AAAB4B300050BD0</string>
+			<key>productType</key>
+			<string>com.apple.product-type.bundle.unit-test</string>
+		</dict>
+		<key>1F9F77D21AAAB4B300050BD0</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>wrapper.cfbundle</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>path</key>
+			<string>batmanTests.xctest</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>1F9F77D31AAAB4B300050BD0</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>1F9F77B11AAAB4B200050BD0</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>1F9F77B81AAAB4B200050BD0</string>
+			<key>remoteInfo</key>
+			<string>batman</string>
+		</dict>
+		<key>1F9F77D41AAAB4B300050BD0</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>target</key>
+			<string>1F9F77B81AAAB4B200050BD0</string>
+			<key>targetProxy</key>
+			<string>1F9F77D31AAAB4B300050BD0</string>
+		</dict>
+		<key>1F9F77D51AAAB4B300050BD0</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1F9F77D81AAAB4B300050BD0</string>
+				<string>1F9F77D61AAAB4B300050BD0</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>batmanTests</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77D61AAAB4B300050BD0</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1F9F77D71AAAB4B300050BD0</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Supporting Files</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77D71AAAB4B300050BD0</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.plist.xml</string>
+			<key>path</key>
+			<string>Info.plist</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77D81AAAB4B300050BD0</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>batmanTests.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77D91AAAB4B300050BD0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1F9F77D81AAAB4B300050BD0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1F9F77DA1AAAB4B300050BD0</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>NO</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_DYNAMIC_NO_PIC</key>
+				<string>NO</string>
+				<key>GCC_OPTIMIZATION_LEVEL</key>
+				<string>0</string>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
+				<string>NO</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.1</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>ONLY_ACTIVE_ARCH</key>
+				<string>YES</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>1F9F77DB1AAAB4B300050BD0</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ALWAYS_SEARCH_USER_PATHS</key>
+				<string>NO</string>
+				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
+				<string>gnu++0x</string>
+				<key>CLANG_CXX_LIBRARY</key>
+				<string>libc++</string>
+				<key>CLANG_ENABLE_MODULES</key>
+				<string>YES</string>
+				<key>CLANG_ENABLE_OBJC_ARC</key>
+				<string>YES</string>
+				<key>CLANG_WARN_BOOL_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_EMPTY_BODY</key>
+				<string>YES</string>
+				<key>CLANG_WARN_ENUM_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_INT_CONVERSION</key>
+				<string>YES</string>
+				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
+				<string>YES_ERROR</string>
+				<key>CLANG_WARN_UNREACHABLE_CODE</key>
+				<string>YES</string>
+				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
+				<string>YES</string>
+				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
+				<string>iPhone Developer</string>
+				<key>COPY_PHASE_STRIP</key>
+				<string>YES</string>
+				<key>ENABLE_NS_ASSERTIONS</key>
+				<string>NO</string>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_C_LANGUAGE_STANDARD</key>
+				<string>gnu99</string>
+				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
+				<string>YES</string>
+				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
+				<string>YES_ERROR</string>
+				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
+				<string>YES_AGGRESSIVE</string>
+				<key>GCC_WARN_UNUSED_FUNCTION</key>
+				<string>YES</string>
+				<key>GCC_WARN_UNUSED_VARIABLE</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>8.1</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>VALIDATE_PRODUCT</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>1F9F77DC1AAAB4B300050BD0</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>1F9F77DD1AAAB4B300050BD0</string>
+				<string>1F9F77DE1AAAB4B300050BD0</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>1F9F77DD1AAAB4B300050BD0</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>INFOPLIST_FILE</key>
+				<string>batman/Supporting Files/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>1F9F77DE1AAAB4B300050BD0</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
+				<string>AppIcon</string>
+				<key>INFOPLIST_FILE</key>
+				<string>batman/Supporting Files/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TARGETED_DEVICE_FAMILY</key>
+				<string>1</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>1F9F77DF1AAAB4B300050BD0</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>1F9F77E01AAAB4B300050BD0</string>
+				<string>1F9F77E11AAAB4B300050BD0</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>1F9F77E01AAAB4B300050BD0</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(TEST_HOST)</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
+				<array>
+					<string>DEBUG=1</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>batmanTests/Supporting Files/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUILT_PRODUCTS_DIR)/batman.app/batman</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>1F9F77E11AAAB4B300050BD0</key>
+		<dict>
+			<key>buildSettings</key>
+			<dict>
+				<key>BUNDLE_LOADER</key>
+				<string>$(TEST_HOST)</string>
+				<key>FRAMEWORK_SEARCH_PATHS</key>
+				<array>
+					<string>$(SDKROOT)/Developer/Library/Frameworks</string>
+					<string>$(inherited)</string>
+				</array>
+				<key>INFOPLIST_FILE</key>
+				<string>batmanTests/Supporting Files/Info.plist</string>
+				<key>LD_RUNPATH_SEARCH_PATHS</key>
+				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>TEST_HOST</key>
+				<string>$(BUILT_PRODUCTS_DIR)/batman.app/batman</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>1F9F77E21AAAB61E00050BD0</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1F0B97581AF94C53005A297D</string>
+				<string>1F0B97561AF9471B005A297D</string>
+				<string>1FBF7FB31AF903CD00D9AD9F</string>
+				<string>1FBF7FB41AF903CD00D9AD9F</string>
+				<string>1FBF7FB11AF903BF00D9AD9F</string>
+				<string>1FCD196B1ACFA7D400CF6C0D</string>
+				<string>1FCD196C1ACFA7D400CF6C0D</string>
+				<string>1F9F77E91AAACCEA00050BD0</string>
+				<string>1F9F77EA1AAACCEA00050BD0</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>images</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77E91AAACCEA00050BD0</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>img_batman_logo.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77EA1AAACCEA00050BD0</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>img_new_batman_logo.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1F9F77EB1AAACCEA00050BD0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1F9F77E91AAACCEA00050BD0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1F9F77EC1AAACCEA00050BD0</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1F9F77EA1AAACCEA00050BD0</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1FBF7FB11AF903BF00D9AD9F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>img_d-pad.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FBF7FB21AF903BF00D9AD9F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1FBF7FB11AF903BF00D9AD9F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1FBF7FB31AF903CD00D9AD9F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>icon_throwing&#8208;knife.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FBF7FB41AF903CD00D9AD9F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>icon_rocket.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FBF7FB51AF903CD00D9AD9F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1FBF7FB31AF903CD00D9AD9F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1FBF7FB61AF903CD00D9AD9F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1FBF7FB41AF903CD00D9AD9F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1FBF7FB71AF9297000D9AD9F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1F0B97531AF94270005A297D</string>
+				<string>1F0B97541AF94270005A297D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Models</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FBF7FB81AF9298700D9AD9F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1F9F77C31AAAB4B200050BD0</string>
+				<string>1F9F77C41AAAB4B200050BD0</string>
+				<string>1FBF7FBB1AF92BAE00D9AD9F</string>
+				<string>1FBF7FBC1AF92BAE00D9AD9F</string>
+				<string>1F0B974A1AF9386B005A297D</string>
+				<string>1F0B974B1AF9386B005A297D</string>
+				<string>1F0B974D1AF93A75005A297D</string>
+				<string>1F0B974E1AF93A75005A297D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Controllers</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FBF7FB91AF9299100D9AD9F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1FCD19721ACFAF0D00CF6C0D</string>
+				<string>1FCD19731ACFAF0D00CF6C0D</string>
+				<string>1FCD197E1ACFC61600CF6C0D</string>
+				<string>1FCD197F1ACFC61600CF6C0D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Views</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FBF7FBA1AF92A5000D9AD9F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1F9273CF1AF4889D009ED19B</string>
+				<string>1F9273D01AF4889D009ED19B</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>Vendor</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FBF7FBB1AF92BAE00D9AD9F</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>ViewController.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FBF7FBC1AF92BAE00D9AD9F</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>ViewController.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FBF7FBD1AF92BAE00D9AD9F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1FBF7FBC1AF92BAE00D9AD9F</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1FCD19641ACFA79E00CF6C0D</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>1FCD19651ACFA7C100CF6C0D</string>
+				<string>1FCD19661ACFA7C100CF6C0D</string>
+				<string>1FCD19671ACFA7C100CF6C0D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>path</key>
+			<string>sound</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FCD19651ACFA7C100CF6C0D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>audio.mp3</string>
+			<key>path</key>
+			<string>bomb.mp3</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FCD19661ACFA7C100CF6C0D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>audio.mp3</string>
+			<key>path</key>
+			<string>gunshot3.mp3</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FCD19671ACFA7C100CF6C0D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>audio.mp3</string>
+			<key>path</key>
+			<string>hit_axe1.mp3</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FCD19681ACFA7C100CF6C0D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1FCD19651ACFA7C100CF6C0D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1FCD19691ACFA7C100CF6C0D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1FCD19661ACFA7C100CF6C0D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1FCD196A1ACFA7C100CF6C0D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1FCD19671ACFA7C100CF6C0D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1FCD196B1ACFA7D400CF6C0D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>bg-road.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FCD196C1ACFA7D400CF6C0D</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>image.png</string>
+			<key>path</key>
+			<string>img_particle.png</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FCD196D1ACFA7D400CF6C0D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1FCD196B1ACFA7D400CF6C0D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1FCD196E1ACFA7D400CF6C0D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1FCD196C1ACFA7D400CF6C0D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1FCD19721ACFAF0D00CF6C0D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>BackgroundView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FCD19731ACFAF0D00CF6C0D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>BackgroundView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FCD19741ACFAF0D00CF6C0D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1FCD19731ACFAF0D00CF6C0D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>1FCD197E1ACFC61600CF6C0D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>HPView.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FCD197F1ACFC61600CF6C0D</key>
+		<dict>
+			<key>fileEncoding</key>
+			<string>4</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>HPView.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1FCD19801ACFC61600CF6C0D</key>
+		<dict>
+			<key>fileRef</key>
+			<string>1FCD197F1ACFC61600CF6C0D</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+	</dict>
+	<key>rootObject</key>
+	<string>1F9F77B11AAAB4B200050BD0</string>
+</dict>
+</plist>

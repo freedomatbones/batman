@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>4C3F681A-30C6-45E1-A68B-9D7B9402840D</string>
+	<key>IDESourceControlProjectName</key>
+	<string>batman</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5CC0249BC64023FE0C8BE67C789758B0BB2AE107</key>
+		<string>ssh://github.com/freedomatbones/batman.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>batman.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5CC0249BC64023FE0C8BE67C789758B0BB2AE107</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/freedomatbones/batman.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5CC0249BC64023FE0C8BE67C789758B0BB2AE107</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5CC0249BC64023FE0C8BE67C789758B0BB2AE107</string>
+			<key>IDESourceControlWCCName</key>
+			<string>batman</string>
+		</dict>
+	</array>
+</dict>
+</plist>

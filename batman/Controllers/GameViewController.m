@@ -1,16 +1,14 @@
 //
-//  ViewController.m
+//  GameViewController.m
 //  batman
 //
 //  Created by 山口 大輔 on 2015/03/07.
 //  Copyright (c) 2015年 山口 大輔. All rights reserved.
 //
 
-#import "ViewController.h"
-#import "BackgroundView.h"
-#import "HPView.h"
+#import "GameViewController.h"
 
-@interface ViewController ()
+@interface GameViewController ()
 
 @property UAProgressView *progressView1;
 @property UAProgressView *progressView2;
@@ -28,7 +26,7 @@
 
 @end
 
-@implementation ViewController
+@implementation GameViewController
 
 const int GRID_X_LENGTH = 5;
 
@@ -43,64 +41,52 @@ const int GRID_X_LENGTH = 5;
     // HPBar設定
     hp = [[HPView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 200)];
     hp.myLabel.text    = @"d-yamaguchi";
-    hp.enemyLabel.text = @"s-yamaguchi";
+    hp.enemyLabel.text = _enemyPerson.name;
     [self.view addSubview: hp];
     
-    /////////////////////////////////
     //初期化
     myShots    = [[NSMutableArray alloc]init];
     enemyShots = [[NSMutableArray alloc]init];
     
     [self initMyObject];
     
+    [self createEnemy];
+    
     myEmitterLayer = [self createEmitterLayer];
     enemyEmitterLayer = [self createEmitterLayer];
-    ///////////////////////////////////////////////
     
-    
-    ///////////////////////////////
     _progressView1 = [[UAProgressView alloc]initWithFrame: CGRectMake(100, 100, 50, 50)];
     _progressView1.center = CGPointMake(self.view.bounds.size.width-_progressView1.frame.size.width,
                                         self.view.bounds.size.height-_progressView1.frame.size.height*2);
+    _progressView1.layer.zPosition = 200;
     [self setupProgressView1];
     [self.view addSubview: _progressView1];
     
     _progressView2 = [[UAProgressView alloc]initWithFrame: CGRectMake(100, 100, 50, 50)];
     _progressView2.center = CGPointMake(self.view.bounds.size.width-_progressView2.frame.size.width*2,
                                         self.view.bounds.size.height-_progressView2.frame.size.height*1);
+    _progressView2.layer.zPosition = 200;
     [self setupProgressView2];
     [self.view addSubview: _progressView2];
-    ////////////////////////////////
-    
-    ////////////////////////////////
-    UIImage *juimg = [UIImage imageNamed:@"d_apri_juuji"];
-    UIImageView *juimgView = [[UIImageView alloc] initWithImage:juimg];
-    juimgView.frame = CGRectMake(self.view.bounds.origin.x + 20,
+
+    UIImage *dPad = [UIImage imageNamed:@"img_d-pad.png"];
+    UIImageView *dPadView = [[UIImageView alloc] initWithImage:dPad];
+    dPadView.frame = CGRectMake(self.view.bounds.origin.x + 20,
                                  self.view.bounds.size.height - 150,
                                  130,
                                  130);
-    [self.view addSubview: juimgView];
-    ////////////////////////////////
-}
-
-/////////////////////////////////////////////////
-/* UIImagePickerControllerを呼び出すため */
-- (void)viewDidAppear:(BOOL)animated
-{
-    // selectpicker起動
-    if(enemyIV == NULL){
-        [self uiImagePickerController];
-    }else{
-        
-    }
+    dPadView.tag = 1;
+    dPadView.layer.zPosition = 200;
+    dPadView.userInteractionEnabled = YES;
+    [self.view addSubview: dPadView];
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 /* 初期化処理 *///////////////////////////////////////////////////////////////////
-/* 攻撃ボタン *///////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
+
+/* 攻撃ボタン1 *//////////////////////////////////////////////////////////////////
 - (void)setupProgressView1 {
-    UIImage *img = [UIImage imageNamed:@"thu0994554.png"];
+    UIImage *img = [UIImage imageNamed:@"icon_throwing‐knife.png"];
     CGSize sz = CGSizeMake(35, 35);
     UIGraphicsBeginImageContext(CGSizeMake(sz.width, sz.height));
     [img drawInRect:CGRectMake(0, 0, sz.width, sz.height)];
@@ -125,46 +111,10 @@ const int GRID_X_LENGTH = 5;
     
     [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(updateProgress1:) userInfo:nil repeats:YES];
     
-    // 色が変化した時に呼ばれる？
-    self.progressView1.fillChangedBlock = ^(UAProgressView *progressView, BOOL filled, BOOL animated){
-        if (_localProgress1 == 1.0f) {
-            UIColor *color = (filled ? [UIColor whiteColor] : [UIColor grayColor]);
-            UIImage *img = [UIImage imageNamed:@"thu0994554.png"];
-            CGSize sz = CGSizeMake(35, 35);
-            UIGraphicsBeginImageContext(CGSizeMake(sz.width, sz.height));
-            [img drawInRect:CGRectMake(0, 0, sz.width, sz.height)];
-            img = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
-            
-            UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
-            imgView.contentMode = UIViewContentModeCenter;
-            [imgView setFrame:CGRectMake(0, 0, 50, 50)];
-            imgView.tintColor = color;
-            
-            UIColor *bcolor = [UIColor whiteColor];
-            bcolor = [bcolor colorWithAlphaComponent:0.5];
-            imgView.backgroundColor = bcolor;
-            imgView.layer.cornerRadius = 50 / 2.0;
-            imgView.clipsToBounds = YES;
-            // 押して離した瞬間
-            if (animated) {
-                NSLog(@"if");
-                [UIView animateWithDuration:0.3 animations:^{
-                    progressView.centralView = imgView;
-                }];
-            }
-            // 押した瞬間
-            else {
-                
-            }
-        }
-    };
-    
     // タップされたときに呼ばれる？
     self.progressView1.didSelectBlock = ^(UAProgressView *progressView){
         if (_localProgress1 == 1.0f) {
             _shot1 = YES;
-            progressView.fillOnTouch = NO;
         }
     };
     
@@ -173,7 +123,7 @@ const int GRID_X_LENGTH = 5;
         
         UIColor *color = (progress == 1.0f ? [UIColor blackColor] : [UIColor grayColor]);
         
-        UIImage *img = [UIImage imageNamed:@"thu0994554.png"];
+        UIImage *img = [UIImage imageNamed:@"icon_throwing‐knife.png"];
         CGSize sz = CGSizeMake(35, 35);
         UIGraphicsBeginImageContext(CGSizeMake(sz.width, sz.height));
         [img drawInRect:CGRectMake(0, 0, sz.width, sz.height)];
@@ -198,26 +148,32 @@ const int GRID_X_LENGTH = 5;
 }
 
 - (void)updateProgress1:(NSTimer *)timer {
-    if (_localProgress1 != 1.0f) {
-        _localProgress1 = ( (int)((_localProgress1 * 100.0f) + 1.01) % 101 ) / 100.0f;
+    NSUInteger count = [myShots count];
+    if (count < 3) {
+        _localProgress1 = 1.0;
         [self.progressView1 setProgress:_localProgress1];
+        self.progressView1.fillOnTouch = YES;
+    } else {
+        _localProgress1 = 0.0;
+        [self.progressView1 setProgress:_localProgress1];
+        self.progressView1.fillOnTouch = NO;
     }
+
     
-    if (_shot1) {
+    if (_shot1) {        
         _shot1 = !_shot1;
-        _localProgress1 = 0.0f;
         [self shotTapped1];
     }
+    
 }
 
 - (void)shotTapped1 {
-    NSLog(@"shot tapped");
+    [self createMyShot];
 }
-////////////////////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////////////////////////////////
+/* 攻撃ボタン2 *//////////////////////////////////////////////////////////////////
 - (void)setupProgressView2 {
-    UIImage *img = [UIImage imageNamed:@"31807.png"];
+    UIImage *img = [UIImage imageNamed:@"icon_rocket.png"];
     img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
     UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
     [imgView setFrame:CGRectMake(0, 0, 50, 50)];
@@ -239,7 +195,7 @@ const int GRID_X_LENGTH = 5;
     self.progressView2.fillChangedBlock = ^(UAProgressView *progressView, BOOL filled, BOOL animated){
         if (_localProgress2 == 1.0f) {
             UIColor *color = (filled ? [UIColor whiteColor] : [UIColor grayColor]);
-            UIImage *img = [UIImage imageNamed:@"31807.png"];
+            UIImage *img = [UIImage imageNamed:@"icon_rocket.png"];
             img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
             [imgView setFrame:CGRectMake(0, 0, 50, 50)];
@@ -277,7 +233,7 @@ const int GRID_X_LENGTH = 5;
         
         UIColor *color = (progress == 1.0f ? [UIColor blackColor] : [UIColor grayColor]);
         
-        UIImage *img = [UIImage imageNamed:@"31807.png"];
+        UIImage *img = [UIImage imageNamed:@"icon_rocket.png"];
         img = [img imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         UIImageView *imgView = [[UIImageView alloc] initWithImage:img];
         [imgView setFrame:CGRectMake(0, 0, 50, 50)];
@@ -310,11 +266,10 @@ const int GRID_X_LENGTH = 5;
 - (void)shotTapped2 {
     NSLog(@"shot tapped");
 }
-////////////////////////////////////////////////////////////////////////////
 
 /* 自分を表示させる */
 - (void)initMyObject {
-    UIImage *myImg = [UIImage imageNamed:@"batman_logo.png"];
+    UIImage *myImg = [UIImage imageNamed:@"img_batman_logo.png"];
     myIV = [[UIImageView alloc]initWithImage:myImg];
     myIV.userInteractionEnabled = YES;
     myIV.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 100);
@@ -324,86 +279,88 @@ const int GRID_X_LENGTH = 5;
     
     // 移動タイマー設定
     moveTimer = [NSTimer scheduledTimerWithTimeInterval:0.01 target:self selector:@selector(move:) userInfo:nil repeats:YES];
-    
-    // タップイベント設定
-    UITapGestureRecognizer *singleFingerDTap = [[UITapGestureRecognizer alloc]
-                                                initWithTarget:self
-                                                action:@selector(handleSingleTap:)];
-    [self.view addGestureRecognizer:singleFingerDTap];
 }
 
-// 移動イベント
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+////////////////////////////////////////////////////////////////////////////////
+/* 移動イベント */////////////////////////////////////////////////////////////////
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
     UITouch *touch = [touches anyObject];
-    
-    [controller removeFromSuperview];
-    [stick removeFromSuperview];
-    
-    controller = [[UIView alloc] init];
-    controller.frame = CGRectMake(0, 0, 200, 200);
-    controller.center = [touch locationInView:self.view];
-    controller.layer.cornerRadius = controller.frame.size.width / 2.0;
-    UIColor *controllerColor = [UIColor greenColor];
-    UIColor *controllerAlphaColor = [controllerColor colorWithAlphaComponent:0.1];
-    controller.backgroundColor = controllerAlphaColor;
-    controller.clipsToBounds = YES;
-    [self.view addSubview:controller];
-    
-    stick = [[UIView alloc] init];
-    stick.frame = CGRectMake(0, 0, 100, 100);
-    stick.center = [touch locationInView:self.view];
-    stick.layer.cornerRadius = stick.frame.size.width / 2.0;
-    UIColor *stickColor = [UIColor blueColor];
-    UIColor *stickAlphaColor = [stickColor colorWithAlphaComponent:0.2];
-    stick.backgroundColor = stickAlphaColor;
-    stick.clipsToBounds = YES;
-    [self.view addSubview:stick];
-
-    moveDistanceBegan = [touch locationInView:self.view];
+    UIView *view = touch.view;
+    CGPoint location = [touch locationInView: self.view];
+    switch (view.tag) {
+        case 1:
+            [self updateMove:view withTouchPoint:location];
+            break;
+            
+        default:
+            break;
+    }
 }
+
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event{
     UITouch *touch = [touches anyObject];
-    
-    stick.center = [touch locationInView:self.view];
-    
-    CGPoint moveDistanceMoved = [touch locationInView:self.view];
-    moveDistance =
-    CGPointMake(moveDistanceMoved.x - moveDistanceBegan.x, moveDistanceMoved.y - moveDistanceBegan.y);
+    UIView *view = touch.view;
+    CGPoint location = [touch locationInView: self.view];
+    switch (view.tag) {
+        case 1:
+            [self updateMove:view withTouchPoint:location];
+            break;
+            
+        default:
+            break;
+    }
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
-    [controller removeFromSuperview];
-    [stick removeFromSuperview];
-    moveDistance = CGPointMake(0, 0);
+    UITouch *touch = [touches anyObject];
+    UIView *view = touch.view;
+    
+    switch (view.tag) {
+        case 1:
+            [self updateMove:view];
+            break;
+            
+        default:
+            break;
+    }
+}
+
+- (void)updateMove:(UIView *) uv {
+    moveX = 0.0;
+    moveY = 0.0;
+}
+
+- (void)updateMove:(UIView *) uv withTouchPoint: (CGPoint)touchPoint {
+    double diffX = touchPoint.x - uv.center.x;
+    double diffY = touchPoint.y - uv.center.y;
+    moveX = diffX / (uv.frame.size.width / 2.0);
+    moveY = diffY / (uv.frame.size.height / 2.0);
 }
 
 // 動かす
 - (void)move:(NSTimer *)timer{
-    
-    int xxx = 50;
-    int maxDistance = 5;
-    
-    float moveX = moveDistance.x / xxx;
-    float moveY = moveDistance.y / xxx;
-    
-    if (moveX < 0) {
-        moveX = fabs(moveX) >= maxDistance ? -maxDistance : moveX;
-    } else {
-        moveX = moveX >= maxDistance ? maxDistance : moveX;
+    // 移動倍率
+    double scall = 5.0;
+    // 移動ピクセル数
+    double x = moveX * scall;
+    double y = moveY * scall;
+    // 移動先四方の座標
+    double right  = myIV.frame.origin.x + myIV.frame.size.width + x;
+    double left   = myIV.frame.origin.x + x;
+    double top    = myIV.frame.origin.y + y;
+    double bottom = myIV.frame.origin.y + myIV.frame.size.height + y;
+    // 画面外には移動させない
+    if (self.view.frame.origin.x + self.view.frame.size.width < right
+        || left < self.view.frame.origin.x) {
+        x = 0;
     }
-    
-    if (moveY < 0) {
-        moveY = fabs(moveY) >= maxDistance ? -maxDistance : moveY;
-    }else{
-        moveY = moveY >= maxDistance ? maxDistance : moveY;
+    if (self.view.frame.origin.y + self.view.frame.size.height < bottom
+        || top < self.view.frame.origin.y) {
+        y = 0;
     }
-    
-    CGRect tmpRect = CGRectMake(myIV.frame.origin.x + moveX, myIV.frame.origin.y + moveY, myIV.frame.size.width, myIV.frame.size.height);
-    
-    if ( CGRectContainsRect(self.view.frame, tmpRect) ){
-        myIV.center = CGPointMake(myIV.center.x + moveX, myIV.center.y + moveY);
-    } else {
-        
-    }
+    // 移動実行
+    myIV.center = CGPointMake(myIV.center.x + x, myIV.center.y + y);
 }
 
 /* ダメージエフェクト設定 */////////////////////////////////////////////////////////
@@ -430,7 +387,7 @@ const int GRID_X_LENGTH = 5;
 
 /* パーティカルエフェクトの素材画像を作成する */
 - (UIImage *)createParticleImg {
-    UIImage *img_mae = [UIImage imageNamed:@"particle.png"];  // リサイズ前UIImage
+    UIImage *img_mae = [UIImage imageNamed:@"img_particle.png"];  // リサイズ前UIImage
     UIImage *image;
     CGFloat width = 100;  // リサイズ後幅のサイズ
     CGFloat height = 100;  // リサイズ後高さのサイズ
@@ -514,37 +471,9 @@ const int GRID_X_LENGTH = 5;
                      forKeyPath:@"emitterCells.fireworks.birthRate"];
 }
 
-/* UIImagePickerController *////////////////////////////////////////////////////
-/* 画像選択画面を呼び出す */
-- (void) uiImagePickerController {
-    UIImagePickerController *ipc = [[UIImagePickerController alloc] init]; // 生成
-    ipc.delegate = self; // デリゲートを自分自身に設定
-    ipc.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;  // 画像の取得先をアルバムに設定
-    ipc.allowsEditing = YES;  // 画像取得後編集する
-    [self presentViewController:ipc animated:YES completion:nil];
-}
-
-/* 選択後に呼び出される */
-- (void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
-    if(!image){
-        image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    }
-    
-    [self createEnemy:image];
-}
-
-/* close時の動作 */
-- (void) imagePickerControllerDidCancel:(UIImagePickerController*)picker {
-    [self dismissViewControllerAnimated:YES completion:nil];  // モーダルビューを閉じる
-}
-
 /* 敵作成 *//////////////////////////////////////////////////////////////////////
-- (void) createEnemy:(UIImage*)enemyImg {
-    enemyIV = [[UIImageView alloc]initWithImage:enemyImg];
+- (void) createEnemy {
+    enemyIV = [[UIImageView alloc]initWithImage:_enemyPerson.image];
     enemyIV.userInteractionEnabled = YES;
     double maxWidth = self.view.frame.size.width / GRID_X_LENGTH;
     enemyIV.frame = [self resize:enemyIV.frame max:maxWidth];
@@ -645,46 +574,31 @@ const int GRID_X_LENGTH = 5;
 
 /* イベント */////////////////////////////////////////////////////////////////////
 
-/* シングルタップ時に発動 */
-- (void)handleSingleTap:(UIGestureRecognizer *)sender {
-    if (sender.state == UIGestureRecognizerStateEnded){
-        CGPoint tapPoint = [sender locationInView:sender.view];
-        
-//        if (CGRectContainsPoint(myIV.frame, tapPoint)){
-            [self createMyShot];
-//        }
-    }
-}
-
 /* イベントに呼び出される処理 *//////////////////////////////////////////////////////
 
 /* 自身の弾を撃ち出す */
 -(void)createMyShot {
-    NSUInteger count = [myShots count];
-    if (count < 3) {
-        UIImageView *uv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"batman_logo_new.png"]];
-        uv.layer.zPosition = 100;
-        double widthMax = 40.0;
-        
-        CGRect rect = [self resize:uv.frame max:widthMax];
-        rect.origin.x = myIV.center.x - rect.size.width/2;
-        rect.origin.y = myIV.frame.origin.y;
-        uv.frame = rect;
-        
-        [self.view addSubview:uv];
-        [myShots addObject: uv];
-        [self myShotTimerStart: uv];
-        
-        [UIView animateWithDuration:2.0f // アニメーション速度
-                              delay:0.0f // 1秒後にアニメーション
-                            options:UIViewAnimationOptionRepeat
-                         animations:^{
-                             uv.transform = CGAffineTransformMakeRotation(135.0 * M_PI / 180.0);
-                         } completion:^(BOOL finished) {
-                             // アニメーションが終わった後実行する処理
-                         }];
-
-    }
+    UIImageView *uv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img_new_batman_logo.png"]];
+    uv.layer.zPosition = 100;
+    double widthMax = 40.0;
+    
+    CGRect rect = [self resize:uv.frame max:widthMax];
+    rect.origin.x = myIV.center.x - rect.size.width/2;
+    rect.origin.y = myIV.frame.origin.y;
+    uv.frame = rect;
+    
+    [self.view addSubview:uv];
+    [myShots addObject: uv];
+    [self myShotTimerStart: uv];
+    
+    [UIView animateWithDuration:2.0f // アニメーション速度
+                          delay:0.0f // 1秒後にアニメーション
+                        options:UIViewAnimationOptionRepeat
+                     animations:^{
+                         uv.transform = CGAffineTransformMakeRotation(135.0 * M_PI / 180.0);
+                     } completion:^(BOOL finished) {
+                         // アニメーションが終わった後実行する処理
+                     }];
 }
 
 /* 自身弾タイマーを作成してスタート */

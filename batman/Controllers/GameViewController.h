@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  GameViewController.h
 //  batman
 //
 //  Created by 山口 大輔 on 2015/03/07.
@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "HPView.h"
+#import "BackgroundView.h"
 #import "UAProgressView.h"
+#import "Person.h"
 
-@interface ViewController : UIViewController<UINavigationControllerDelegate,
+@interface GameViewController : UIViewController<UINavigationControllerDelegate,
 UIImagePickerControllerDelegate>{
     
     HPView *hp;
@@ -27,14 +29,14 @@ UIImagePickerControllerDelegate>{
     ///////////////////////////////////////////////////
     
     // Batman
-    CGPoint moveDistanceBegan;
-    CGPoint moveDistance;
     NSTimer *moveTimer;
     
-    // controller
-    UIView *controller;
-    UIView *stick;
+    double moveX;
+    double moveY;
 }
+
+@property (nonatomic) Person* myPerson;
+@property (nonatomic) Person* enemyPerson;
 
 @end
 
