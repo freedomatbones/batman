@@ -7,10 +7,12 @@
 //
 
 #import "ViewController.h"
+#import "GameConfig.h"
 #import "Person.h"
 
 @interface EditViewController : ViewController<UINavigationControllerDelegate,
 UIImagePickerControllerDelegate> {
+    GameConfig *gameConfig;
     Person *enemyPerson;
 }
 @property (weak, nonatomic) IBOutlet UITextField *name;

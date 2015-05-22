@@ -8,6 +8,7 @@
 
 #import "EditViewController.h"
 #import "GameViewController.h"
+#import "SoundPlayer.h"
 
 @interface EditViewController ()
 
@@ -17,7 +18,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    NSLog(@"EditViewController:viewDidLoad");
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [SoundPlayer playMusic:EDIT_BGM];
+    NSLog(@"EditViewController:viewWillAppear");
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,20 +47,49 @@
 }
 
 - (IBAction)pushButtonGameStart:(id)sender {
+    gameConfig = [GameConfig alloc];
+    gameConfig.difficulty = _difficulty.selectedSegmentIndex;
+    Sound sound = -1;
+    switch (gameConfig.difficulty) {
+        case NORMAL:
+            sound = NORMAL_BGM;
+            break;
+        case HARD:
+            sound = HARD_BGM;
+            break;
+        default:
+            break;
+    }
+    gameConfig.sound = sound;
+    
     enemyPerson = [Person alloc];
     enemyPerson.name = _name.text;
     enemyPerson.image = _image.image;
-    enemyPerson.difficulty = _difficulty.selectedSegmentIndex;
     if ([enemyPerson.name length] > 0 &&
         enemyPerson.image != nil &&
-        enemyPerson.difficulty >= 0) {
-        [self performSegueWithIdentifier:@"segueGameView2" sender:self];
+        gameConfig.difficulty >= 0) {
+
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"ゲームを開始します" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+        
+        // addActionした順に左から右にボタンが配置されます
+        [alertController addAction:[UIAlertAction actionWithTitle:@"開始" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [SoundPlayer playSE:SELECT_SE];
+            [self performSegueWithIdentifier:@"segueGame" sender:self];
+        }]];
+        [alertController addAction:[UIAlertAction actionWithTitle:@"キャンセル" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        }]];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    } else {
+        [self alert:@"必須項目を入力してください"];
     }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"segueGameView2"]) {
+    if ([segue.identifier isEqualToString:@"segueGame"]) {
+        [SoundPlayer stopMusic];
         GameViewController *viewCon = segue.destinationViewController;
+        viewCon.gameConfig = gameConfig;
         viewCon.enemyPerson = enemyPerson;
     }
 }
@@ -75,13 +113,28 @@
     if(!image){
         image = [info objectForKey:UIImagePickerControllerOriginalImage];
     }
-    
-    self.image.image = image;
+    [self.image setContentMode:UIViewContentModeScaleToFill];
+    self.image.alpha = 1.0;
+    [self.image setImage:image];
 }
 
 /* close時の動作 */
 - (void) imagePickerControllerDidCancel:(UIImagePickerController*)picker {
     [self dismissViewControllerAnimated:YES completion:nil];  // モーダルビューを閉じる
+}
+
+// お手軽アラート
+// 警告を表示します。OKボタンタップで閉じます。
+- (void)alert:(NSString*)message {
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:message preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    
+    // 親ビューコンをなんとか検索
+    UIViewController *baseView = [UIApplication sharedApplication].keyWindow.rootViewController;
+    while (baseView.presentedViewController != nil && !baseView.presentedViewController.isBeingDismissed) {
+        baseView = baseView.presentedViewController;
+    }
+    [baseView presentViewController:alert animated:YES completion:nil];
 }
 
 @end

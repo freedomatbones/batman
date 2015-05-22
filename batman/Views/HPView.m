@@ -43,7 +43,7 @@
             initWithProgressViewStyle:UIProgressViewStyleDefault];
     _myPV.progressTintColor = [ UIColor greenColor ]; // OKな所の色
     _myPV.trackTintColor = [ UIColor redColor ]; // 背景色
-    _myPV.frame = CGRectMake(10, 30, self.frame.size.width/2-20, 10);
+    _myPV.frame = CGRectMake(10, 30, self.frame.size.width/2-40, 10);
     _myPV.progress = 1.0;
     CGAffineTransform t1 = CGAffineTransformMakeScale( 1.0f, 2.4f ); // 引き延ばす
     CGAffineTransform t2 = CGAffineTransformMakeRotation( -180.0f * M_PI / 180.0f ); // 回転(弄るなら左)
@@ -61,7 +61,7 @@
                initWithProgressViewStyle:UIProgressViewStyleDefault];
     _enemyPV.progressTintColor = [ UIColor greenColor ]; // OKな所の色
     _enemyPV.trackTintColor = [ UIColor redColor ]; // 背景色
-    _enemyPV.frame = CGRectMake(self.center.x+10, 30, self.frame.size.width/2-20, 10);
+    _enemyPV.frame = CGRectMake(self.center.x+30, 30, self.frame.size.width/2-40, 10);
     _enemyPV.progress = 1.0;
     _enemyPV.transform = CGAffineTransformMakeScale( 1.0f, 2.4f ); // 引き延ばす
     [self addSubview:_enemyPV];

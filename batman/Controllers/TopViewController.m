@@ -8,6 +8,7 @@
 
 #import "TopViewController.h"
 #import "GameViewController.h"
+#import "SoundPlayer.h"
 
 @interface TopViewController ()
 
@@ -17,7 +18,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [SoundPlayer playMusic:MAIN_BGM];
+}
+
+-(void)viewWillDisappear:(BOOL)animated{
 }
 
 - (void)didReceiveMemoryWarning {
@@ -25,29 +32,82 @@
     // Dispose of any resources that can be recreated.
 }
 
+//戻る用のメソッド実装
+- (IBAction)prevView:(UIStoryboardSegue *)segue {
+    [SoundPlayer playSE:CANCEL_SE];
+}
+
 - (IBAction)pushButtonNormal:(id)sender {
-    enemyPerson = [Person alloc];
-    enemyPerson.name = @"Joker";
-    enemyPerson.image = [UIImage imageNamed:@"img_joker.jpg"];
-    enemyPerson.difficulty = NORMAL;
-    [self performSegueWithIdentifier:@"segueGameView" sender:self];
+    [SoundPlayer playSE:SELECT_SE];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"ゲームを開始します" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    
+    // addActionした順に左から右にボタンが配置されます
+    [alertController addAction:[UIAlertAction actionWithTitle:@"開始" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [SoundPlayer playSE:SELECT_SE];
+        gameConfig = [GameConfig alloc];
+        gameConfig.difficulty = NORMAL;
+        gameConfig.sound = NORMAL_BGM;
+        
+        myPerson = [Person alloc];
+        myPerson.name = @"badman";
+        myPerson.image = [UIImage imageNamed:@"img_batman_logo.png"];
+        
+        enemyPerson = [Person alloc];
+        enemyPerson.name = @"Joker";
+        enemyPerson.image = [UIImage imageNamed:@"img_joker.jpg"];
+        [self performSegueWithIdentifier:@"segueGame" sender:self];
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"キャンセル" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [SoundPlayer playSE:CANCEL_SE];
+    }]];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (IBAction)pushButtonHard:(id)sender {
-    enemyPerson = [Person alloc];
-    enemyPerson.name = @"a-watanabe";
-    enemyPerson.image = [UIImage imageNamed:@"a-watanabe.jpg"];
-    enemyPerson.difficulty = HARD;
-    [self performSegueWithIdentifier:@"segueGameView" sender:self];
+    [SoundPlayer playSE:SELECT_SE];
+    
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"ゲームを開始します" message:@"" preferredStyle:UIAlertControllerStyleAlert];
+    
+    // addActionした順に左から右にボタンが配置されます
+    [alertController addAction:[UIAlertAction actionWithTitle:@"開始" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [SoundPlayer playSE:SELECT_SE];
+        gameConfig = [GameConfig alloc];
+        gameConfig.difficulty = HARD;
+        gameConfig.sound = HARD_BGM;
+        
+        myPerson = [Person alloc];
+        myPerson.name = @"badman";
+        myPerson.image = [UIImage imageNamed:@"img_batman_logo.png"];
+        
+        enemyPerson = [Person alloc];
+        enemyPerson.name = @"a-watanabe";
+        enemyPerson.image = [UIImage imageNamed:@"a-watanabe.jpg"];
+        [self performSegueWithIdentifier:@"segueGame" sender:self];
+    }]];
+    [alertController addAction:[UIAlertAction actionWithTitle:@"キャンセル" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [SoundPlayer playSE:CANCEL_SE];
+    }]];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (IBAction)pushButtonEdit:(id)sender {
-    [self performSegueWithIdentifier:@"segueEditView" sender:self];
+    [SoundPlayer playSE:SELECT_SE];
+    [self performSegueWithIdentifier:@"segueEdit" sender:self];
+}
+
+- (IBAction)pushButtonScore:(id)sender {
+    [SoundPlayer playSE:SELECT_SE];
+    [self performSegueWithIdentifier:@"segueScore" sender:self];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"segueGameView"]) {
+    if ([segue.identifier isEqualToString:@"segueGame"]) {
         GameViewController *viewCon = segue.destinationViewController;
+        viewCon.gameConfig = gameConfig;
+        viewCon.myPerson = myPerson;
         viewCon.enemyPerson = enemyPerson;
     }
 }

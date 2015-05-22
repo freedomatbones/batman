@@ -8,9 +8,14 @@
 
 #import "ViewController.h"
 #import "Person.h"
+#import "GameConfig.h"
 
-@interface TopViewController : ViewController {
+@interface TopViewController : ViewController<AVAudioPlayerDelegate> {
+    GameConfig *gameConfig;
+    Person *myPerson;
     Person *enemyPerson;
 }
+
+@property(nonatomic) AVAudioPlayer *audioPlayer;
 
 @end

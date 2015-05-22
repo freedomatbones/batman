@@ -1,0 +1,15 @@
+PODS:
+  - Realm (0.92.2):
+    - Realm/Headers (= 0.92.2)
+  - Realm/Headers (0.92.2)
+  - UAProgressView (0.1.1)
+
+DEPENDENCIES:
+  - Realm (= 0.92.2)
+  - UAProgressView (= 0.1.1)
+
+SPEC CHECKSUMS:
+  Realm: fa8e8f7f788dd63744485c15b453487bc7546c8e
+  UAProgressView: 9518e321a5d4173f66c225717db873322ec1f070
+
+COCOAPODS: 0.37.1

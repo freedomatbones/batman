@@ -8,17 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "Enum.h"
 
 @interface Person : NSObject
 
-typedef NS_ENUM(NSInteger, Difficulty)
-{
-    NORMAL = 0,
-    HARD
-};
-
 @property (nonatomic) NSString* name;
 @property (nonatomic) UIImage *image;
-@property (nonatomic) Difficulty difficulty;
 
 @end

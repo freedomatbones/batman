@@ -21,4 +21,7 @@
     NSTimer *bgMoveTimer;
 }
 
+- (void)start;
+- (void)end;
+
 @end

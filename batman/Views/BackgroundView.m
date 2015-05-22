@@ -50,21 +50,13 @@
     sizeWidth = self.frame.size.width;
     sizeHeight = self.frame.size.height;
     
+    bgImage1.frame = CGRectMake(0, bgY1, sizeWidth, sizeHeight);
     bgImage2.frame = CGRectMake(0, self.frame.size.height, sizeWidth, sizeHeight);
     
     [self addSubview:bgImage1];
     [self addSubview:bgImage2];
-    
-    [NSThread detachNewThreadSelector:@selector(threadAction) toTarget:self withObject:nil];
-    
+        
     return self;
-}
-
--(void)threadAction{
-    while (true) {
-        [NSThread sleepForTimeInterval:0.01];
-        [self performSelectorOnMainThread:@selector(timerIntervalShowImage) withObject:nil waitUntilDone:NO];
-    }
 }
 
 // 移動
@@ -76,11 +68,21 @@
         bgY2 = 0 - sizeHeight;
     }
     
-    bgY1++;
-    bgY2++;
+    bgY1 += 1;
+    bgY2 += 1;
     
     bgImage1.frame = CGRectMake(0, bgY1, sizeWidth, sizeHeight);
     bgImage2.frame = CGRectMake(0, bgY2, sizeWidth, sizeHeight);
+}
+
+- (void)start {
+    bgMoveTimer = [NSTimer timerWithTimeInterval:0.005 target:self selector:@selector(timerIntervalShowImage) userInfo:nil repeats:YES];
+    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
+    [runLoop addTimer:bgMoveTimer forMode:NSRunLoopCommonModes];
+}
+
+- (void)end {
+    [bgMoveTimer invalidate];
 }
 
 @end
