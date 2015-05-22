@@ -13,6 +13,7 @@
 @interface EditViewController : ViewController<UINavigationControllerDelegate,
 UIImagePickerControllerDelegate> {
     GameConfig *gameConfig;
+    Person *myPerson;
     Person *enemyPerson;
 }
 @property (weak, nonatomic) IBOutlet UITextField *name;

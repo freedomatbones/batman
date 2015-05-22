@@ -62,6 +62,10 @@
     }
     gameConfig.sound = sound;
     
+    myPerson = [Person alloc];
+    myPerson.name = @"badman";
+    myPerson.image = [UIImage imageNamed:@"img_batman_logo.png"];
+    
     enemyPerson = [Person alloc];
     enemyPerson.name = _name.text;
     enemyPerson.image = _image.image;
@@ -90,6 +94,7 @@
         [SoundPlayer stopMusic];
         GameViewController *viewCon = segue.destinationViewController;
         viewCon.gameConfig = gameConfig;
+        viewCon.myPerson = myPerson;
         viewCon.enemyPerson = enemyPerson;
     }
 }
