@@ -947,6 +947,7 @@ typedef NS_ENUM(NSInteger, AttackType)
     if (timeStart == nil) {
         return;
     }
+    timeStart = nil; // ゲーム終了の印
     [self endThread];
     [self disabledTouch];
     [SoundPlayer playMusic:LOSE_BGM];
@@ -959,7 +960,6 @@ typedef NS_ENUM(NSInteger, AttackType)
     label.textAlignment = NSTextAlignmentCenter;
     label.text = @"You Are Dead";
     [gameLayerView addSubview:label];
-    timeStart = nil; // ゲーム終了の印
     
     float ANIMATION_TIME = 4.0;
     [UIView animateKeyframesWithDuration:ANIMATION_TIME
