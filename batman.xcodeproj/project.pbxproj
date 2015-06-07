@@ -33,6 +33,11 @@
 		1F370D091B051DDC008A4063 /* tony_theme_mix.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1FC0C95E1B0518B1003F1113 /* tony_theme_mix.caf */; };
 		1F370D0A1B051DDC008A4063 /* total_result.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1FC0C95F1B0518B1003F1113 /* total_result.caf */; };
 		1F4A3EFC1B07C40D00E3F857 /* tab.caf in Resources */ = {isa = PBXBuildFile; fileRef = 1F4A3EFB1B07BFD800E3F857 /* tab.caf */; };
+		1F5EB80A1B2403D900486AF2 /* hana.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5EB8081B2403D900486AF2 /* hana.png */; };
+		1F5EB80E1B24091A00486AF2 /* bullet.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5EB80B1B24091A00486AF2 /* bullet.png */; };
+		1F5EB80F1B24091A00486AF2 /* batpod_kai.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5EB80C1B24091A00486AF2 /* batpod_kai.png */; };
+		1F5EB8121B2410BE00486AF2 /* candy.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5EB8111B2410BE00486AF2 /* candy.png */; };
+		1F5EB8141B241AC900486AF2 /* knife.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F5EB8131B241AC900486AF2 /* knife.png */; };
 		1F82586D1AF9DBDE00E173F8 /* UIBorderButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F82586C1AF9DBDE00E173F8 /* UIBorderButton.m */; };
 		1F8258701AF9EA2500E173F8 /* ResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F82586F1AF9EA2500E173F8 /* ResultViewController.m */; };
 		1F8258731AF9F7F400E173F8 /* ScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8258721AF9F7F400E173F8 /* ScoreViewController.m */; };
@@ -97,6 +102,11 @@
 		1F0B97541AF94270005A297D /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		1F0B97561AF9471B005A297D /* img_joker.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = img_joker.jpg; sourceTree = "<group>"; };
 		1F4A3EFB1B07BFD800E3F857 /* tab.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = tab.caf; sourceTree = "<group>"; };
+		1F5EB8081B2403D900486AF2 /* hana.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hana.png; sourceTree = "<group>"; };
+		1F5EB80B1B24091A00486AF2 /* bullet.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bullet.png; sourceTree = "<group>"; };
+		1F5EB80C1B24091A00486AF2 /* batpod_kai.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = batpod_kai.png; sourceTree = "<group>"; };
+		1F5EB8111B2410BE00486AF2 /* candy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = candy.png; sourceTree = "<group>"; };
+		1F5EB8131B241AC900486AF2 /* knife.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = knife.png; sourceTree = "<group>"; };
 		1F82586B1AF9DBDE00E173F8 /* UIBorderButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIBorderButton.h; sourceTree = "<group>"; };
 		1F82586C1AF9DBDE00E173F8 /* UIBorderButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIBorderButton.m; sourceTree = "<group>"; };
 		1F82586E1AF9EA2500E173F8 /* ResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultViewController.h; sourceTree = "<group>"; };
@@ -275,6 +285,11 @@
 		1F9F77E21AAAB61E00050BD0 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				1F5EB8131B241AC900486AF2 /* knife.png */,
+				1F5EB8111B2410BE00486AF2 /* candy.png */,
+				1F5EB80B1B24091A00486AF2 /* bullet.png */,
+				1F5EB80C1B24091A00486AF2 /* batpod_kai.png */,
+				1F5EB8081B2403D900486AF2 /* hana.png */,
 				1FFB74311B106AC60076C35D /* Icon-60@2x.png */,
 				1FFB74321B106AC60076C35D /* Icon-Small-40@2x.png */,
 				1FFB74331B106AC60076C35D /* Icon-Small@2x.png */,
@@ -487,6 +502,7 @@
 				1F370CF91B051DDC008A4063 /* attack1.caf in Resources */,
 				1F370CFA1B051DDC008A4063 /* bomb.caf in Resources */,
 				1F370CFB1B051DDC008A4063 /* cancel.caf in Resources */,
+				1F5EB80A1B2403D900486AF2 /* hana.png in Resources */,
 				1F370CFC1B051DDC008A4063 /* delete.caf in Resources */,
 				1FFB74361B106AC60076C35D /* Icon-Small@2x.png in Resources */,
 				1FFB74351B106AC60076C35D /* Icon-Small-40@2x.png in Resources */,
@@ -511,7 +527,9 @@
 				1FE088391AFEAB7A0072E70F /* Main.storyboard in Resources */,
 				1FFB74301B1061EB0076C35D /* a-watanabe.jpg in Resources */,
 				1FFB742E1B1061C50076C35D /* a-watanabe.jpg in Resources */,
+				1F5EB80F1B24091A00486AF2 /* batpod_kai.png in Resources */,
 				1FBF7FB21AF903BF00D9AD9F /* img_d-pad.png in Resources */,
+				1F5EB80E1B24091A00486AF2 /* bullet.png in Resources */,
 				1F9F77EC1AAACCEA00050BD0 /* img_new_batman_logo.png in Resources */,
 				1FDEBA511B024EED003B894E /* star_white.png in Resources */,
 				1FBF7FB61AF903CD00D9AD9F /* icon_rocket.png in Resources */,
@@ -519,7 +537,9 @@
 				1FDEBA5A1B0250FC003B894E /* star_white_100.png in Resources */,
 				1FCD196E1ACFA7D400CF6C0D /* img_particle.png in Resources */,
 				1FDEBA521B024EED003B894E /* star_black.png in Resources */,
+				1F5EB8141B241AC900486AF2 /* knife.png in Resources */,
 				1F0B97571AF9471B005A297D /* img_joker.jpg in Resources */,
+				1F5EB8121B2410BE00486AF2 /* candy.png in Resources */,
 				1F9F77CD1AAAB4B300050BD0 /* LaunchScreen.xib in Resources */,
 				1FCD196D1ACFA7D400CF6C0D /* bg-road.png in Resources */,
 				1FBF7FB51AF903CD00D9AD9F /* icon_throwing‐knife.png in Resources */,

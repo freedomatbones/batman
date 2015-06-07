@@ -51,11 +51,14 @@
         
         myPerson = [Person alloc];
         myPerson.name = @"badman";
-        myPerson.image = [UIImage imageNamed:@"img_batman_logo.png"];
+        myPerson.image = [UIImage imageNamed:@"batpod_kai.png"];
+        myPerson.weaponImgA = [UIImage imageNamed:@"img_new_batman_logo.png"];
+        myPerson.weaponImgB = [UIImage imageNamed:@"rpg7.png"];
         
         enemyPerson = [Person alloc];
         enemyPerson.name = @"Joker";
         enemyPerson.image = [UIImage imageNamed:@"img_joker.jpg"];
+        enemyPerson.weaponImgA = [UIImage imageNamed:@"bullet.png"];
         [self performSegueWithIdentifier:@"segueGame" sender:self];
     }]];
     [alertController addAction:[UIAlertAction actionWithTitle:@"キャンセル" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
@@ -79,11 +82,14 @@
         
         myPerson = [Person alloc];
         myPerson.name = @"badman";
-        myPerson.image = [UIImage imageNamed:@"img_batman_logo.png"];
+        myPerson.image = [UIImage imageNamed:@"batpod_kai.png"];
+        myPerson.weaponImgA = [UIImage imageNamed:@"candy.png"];
+        myPerson.weaponImgB = [UIImage imageNamed:@"hana.png"];
         
         enemyPerson = [Person alloc];
         enemyPerson.name = @"a-watanabe";
         enemyPerson.image = [UIImage imageNamed:@"a-watanabe.jpg"];
+        enemyPerson.weaponImgA = [UIImage imageNamed:@"knife.png"];
         [self performSegueWithIdentifier:@"segueGame" sender:self];
     }]];
     [alertController addAction:[UIAlertAction actionWithTitle:@"キャンセル" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {

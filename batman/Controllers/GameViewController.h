@@ -41,7 +41,10 @@ UIImagePickerControllerDelegate>{
     NSMutableArray *enemyShots;
     
     // なんかあった時にレイヤーを設定する用のView
-    UIView *gameLayerView;
+     UIView *gameLayerView;
+    
+    //ゲームオーバView
+    UIView *gameoverLayer;
     
     HPView *hp;
     

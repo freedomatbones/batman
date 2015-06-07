@@ -30,7 +30,8 @@ const int GRID_X_LENGTH = 5;
 typedef NS_ENUM(NSInteger, AttackType)
 {
     LIGHT = 10,
-    STRONG = 30
+    STRONG = 30,
+    KILL = 100
 };
 
 - (void)viewDidLoad {
@@ -265,6 +266,7 @@ typedef NS_ENUM(NSInteger, AttackType)
 // GameStart
 - (void)gameStart {
     gameLayerView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
+    gameLayerView.alpha = 0;
     [self setupTimer];
     [self startThread]; // ゲームスタート※全て下準備が終わってから実行!!
 }
@@ -348,9 +350,14 @@ typedef NS_ENUM(NSInteger, AttackType)
 - (void)endThread {
     [backgroundView end];
     [myAttack1ProgressTimer invalidate];
+    myAttack1ProgressTimer = nil;
     [myAttack2ProgressTimer invalidate];
+    myAttack2ProgressTimer = nil;
     [myMoveTimer invalidate];
+    myMoveTimer = nil;
     [enemyMoveTimer invalidate];
+    
+    enemyMoveTimer = nil;
     [self stopMyShots];
     [self stopEnemyShots];
 }
@@ -540,11 +547,10 @@ typedef NS_ENUM(NSInteger, AttackType)
 
 /* 自分を表示させる */
 - (void)initMyObject {
-    UIImage *myImg = [UIImage imageNamed:@"img_batman_logo.png"];
     myIV = [[UIImageView alloc]initWithImage:_myPerson.image];
     myIV.userInteractionEnabled = YES;
     myIV.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 100);
-    double scale = 0.2;
+    double scale = 0.4;
     myIV.transform = CGAffineTransformMakeScale(scale, scale);
     myIV.layer.zPosition = 20;
     [gameView addSubview:myIV];
@@ -636,23 +642,24 @@ typedef NS_ENUM(NSInteger, AttackType)
 -(void)createMyShot:(AttackType)attackType {
     if (attackType == LIGHT) {
         [SoundPlayer playSE:ATTACK_SE1];
-        UIImageView *uv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"img_new_batman_logo.png"]];
-        // アニメーションの初期化　アニメーションのキーパスを"transform"にする
-        CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"transform"];
-        // 回転の開始と終わりの角度を設定　単位はラジアン
-        anim.fromValue = [NSNumber numberWithDouble:0];
-        anim.toValue = [NSNumber numberWithDouble:2 * M_PI];
-        // 回転軸の設定
-        anim.valueFunction = [CAValueFunction functionWithName:kCAValueFunctionRotateZ];
-        //１回転あたりのアニメーション時間　単位は秒
-        anim.duration = 2;
-        // アニメーションのリピート回数
-        anim.repeatCount = MAXFLOAT;
-        // アニメーションをレイヤーにセット
-        [uv.layer addAnimation:anim forKey:nil];
+        UIImageView *uv = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:[self.myPerson.weaponImgA CGImage]]];
+//        // アニメーションの初期化　アニメーションのキーパスを"transform"にする
+//        CABasicAnimation *anim = [CABasicAnimation animationWithKeyPath:@"transform"];
+//        // 回転の開始と終わりの角度を設定　単位はラジアン
+//        anim.fromValue = [NSNumber numberWithDouble:0];
+//        anim.toValue = [NSNumber numberWithDouble:2 * M_PI];
+//        // 回転軸の設定
+//        anim.valueFunction = [CAValueFunction functionWithName:kCAValueFunctionRotateZ];
+//        //１回転あたりのアニメーション時間　単位は秒
+//        anim.duration = 2;
+//        // アニメーションのリピート回数
+//        anim.repeatCount = MAXFLOAT;
+//        // アニメーションをレイヤーにセット
+//        [uv.layer addAnimation:anim forKey:nil];
         
         uv.layer.zPosition = 20;
         double widthMax = 40.0;
+        NSLog(@"createMyShot");
         CGRect rect = [self resize:uv.frame maxX:widthMax maxY:100.0];
         rect.origin.x = myIV.center.x - rect.size.width/2;
         rect.origin.y = myIV.frame.origin.y;
@@ -661,12 +668,11 @@ typedef NS_ENUM(NSInteger, AttackType)
         [gameView addSubview:uv];
         [myShots addObject: uv];
     } else if (attackType == STRONG) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.0 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.0 * NSEC_PER_SEC),dispatch_get_current_queue(), ^{
             [SoundPlayer playSE:ATTACK_SE2];
-            UIImageView *uv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rpg7.png"]];
+            UIImageView *uv = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:[self.myPerson.weaponImgB CGImage]]];
             uv.layer.zPosition = 20;
-            double widthMax = 10.0;
-            CGRect rect = [self resize:uv.frame maxX:widthMax maxY:100.0];
+            CGRect rect = [self resize:uv.frame maxX:40.0 maxY:50.0];
             rect.origin.x = myIV.frame.origin.x + myIV.frame.size.width*1/3 - rect.size.width/2;
             rect.origin.y = myIV.frame.origin.y;
             uv.frame = rect;
@@ -676,10 +682,9 @@ typedef NS_ENUM(NSInteger, AttackType)
         });
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.3 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
             [SoundPlayer playSE:ATTACK_SE2];
-            UIImageView *uv = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"rpg7.png"]];
+            UIImageView *uv = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:[self.myPerson.weaponImgB CGImage]]];
             uv.layer.zPosition = 20;
-            double widthMax = 12.0;
-            CGRect rect = [self resize:uv.frame maxX:widthMax maxY:100.0];
+            CGRect rect = [self resize:uv.frame maxX:40.0 maxY:50.0];
             rect.origin.x = myIV.frame.origin.x + myIV.frame.size.width*2/3 - rect.size.width/2;
             rect.origin.y = myIV.frame.origin.y;
             uv.frame = rect;
@@ -733,16 +738,19 @@ typedef NS_ENUM(NSInteger, AttackType)
 /* プレイヤー弾丸動作停止 */
 - (void)stopMyShots {
     [myShotTimer invalidate];
+    myShotTimer = nil;
     
     NSLog(@"myShots;%ld", myShots.count);
-    
-    // アニメーション停止
-    [myShots enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(UIView *uv, NSUInteger idx, BOOL *stop) {
-        CALayer *layer = uv.layer;
-        CFTimeInterval pausedTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
-        layer.speed = 0.0;
-        layer.timeOffset = pausedTime;
-    }];
+    for(UIView *s in myShots){
+        [s.layer removeAllAnimations];
+    }
+//    // アニメーション停止
+//    [myShots enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(UIView *uv, NSUInteger idx, BOOL *stop) {
+//        CALayer *layer = uv.layer;
+//        CFTimeInterval pausedTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
+//        layer.speed = 0.0;
+//        layer.timeOffset = pausedTime;
+//    }];
 }
 
 /* 敵弾丸動作開始 */
@@ -771,26 +779,34 @@ typedef NS_ENUM(NSInteger, AttackType)
 /* 敵弾丸停止 */
 - (void)stopEnemyShots {
     [enemyShotTimer invalidate];
+    enemyShotTimer = nil;
     
     // アニメーション停止
     [enemyShots enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(UIView *uv, NSUInteger idx, BOOL *stop) {
         CALayer *layer = uv.layer;
-        CFTimeInterval pausedTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
-        layer.speed = 0.0;
-        layer.timeOffset = pausedTime;
+//        CFTimeInterval pausedTime = [layer convertTime:CACurrentMediaTime() fromLayer:nil];
+//        layer.speed = 0.0;
+//        layer.timeOffset = pausedTime;
+        [layer removeAllAnimations];
     }];
 }
 
 /* 敵が攻撃 */
 - (void)createEnemyShot {
-    UIView *uv = [[UIView alloc] init];
-    uv = [[UIView alloc] init];
-    uv.frame = CGRectMake(enemyIV.center.x,
-                          enemyIV.frame.origin.y + enemyIV.frame.size.height,
-                          10, 10);
-    uv.backgroundColor = [UIColor redColor];
-    uv.layer.cornerRadius = uv.frame.size.width / 2.0;
+    UIImageView *uv = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:[self.enemyPerson.weaponImgA CGImage]]];
     uv.clipsToBounds = YES;
+    CGRect rect = [self resize:uv.frame maxX:10.0 maxY:60.0];
+    rect.origin.x = enemyIV.center.x - rect.size.width/2;
+    rect.origin.y = enemyIV.frame.origin.y;
+    uv.frame = rect;
+    CGFloat angle =  180.0 * M_PI / 180.0;
+    uv.transform = CGAffineTransformMakeRotation(angle);
+    uv.layer.zPosition = 20;
+    if ( self.gameConfig.difficulty == NORMAL ) {
+        uv.tag = STRONG; // 攻撃力;
+    } else if (self.gameConfig.difficulty == HARD ) {
+        uv.tag = KILL; // 攻撃力;
+    }
     [gameView addSubview:uv];
     [enemyShots addObject: uv];
 }
@@ -886,11 +902,9 @@ typedef NS_ENUM(NSInteger, AttackType)
             //お互いが重なったときの処理をifの中に書きます。
             [uv removeFromSuperview];
             [removeUv addObject:uv];
-            hp.myPV.progress = hp.myPV.progress - 0.1;
+            hp.myPV.progress = hp.myPV.progress - (uv.tag / 100.0);
             if ( hp.myPV.progress <= 0 ) {
                 [self showYouAreDeadLayer];
-                //                [self stopEnemyShots];
-                //                [timer invalidate];
             }
             
 //            // スレッドパラメータを作成
@@ -914,9 +928,11 @@ typedef NS_ENUM(NSInteger, AttackType)
 
 /* CGRectをmaxの大きさ以下に縮尺して返す */
 - (CGRect)resize:(CGRect)rect maxX:(double)maxX maxY:(double)maxY {
-    double scaleX = maxX / rect.size.width;
-    double scaleY = maxY / rect.size.height;
+    NSLog(@"b:%f %f", rect.size.width, rect.size.height);
+    double scaleX = maxX < rect.size.width  ? maxX / rect.size.width  : 1.0;
+    double scaleY = maxY < rect.size.height ? maxY / rect.size.height : 1.0;
     double scale = scaleX < scaleY ? scaleX : scaleY;
+    NSLog(@"a:%f %f", rect.size.width*scale, rect.size.height*scale);
     rect = CGRectMake(rect.origin.x, rect.origin.y, rect.size.width*scale, rect.size.height*scale);
     return rect;
 }
@@ -944,42 +960,79 @@ typedef NS_ENUM(NSInteger, AttackType)
 
 /* ゲームオーバーレイヤー表示 */
 - (void)showYouAreDeadLayer {
+    NSLog(@"showYouAreDeadLayer");
     if (timeStart == nil) {
         return;
     }
     timeStart = nil; // ゲーム終了の印
     [self endThread];
     [self disabledTouch];
+
     [SoundPlayer playMusic:LOSE_BGM];
-    gameLayerView.backgroundColor = [UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:0.1f];
+    gameoverLayer = [[UIView alloc] initWithFrame:self.view.frame];
+    gameoverLayer.backgroundColor = [UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:0.8f];
+    gameoverLayer.alpha = 0;
+    [self.view addSubview:gameoverLayer];
     UILabel *label = [[UILabel alloc] init];
-    label.frame = gameLayerView.frame;
-    label.center = gameLayerView.center;
-    label.alpha = 0.0f;
+    label.frame = gameoverLayer.frame;
+    label.center = gameoverLayer.center;
     label.font = [UIFont fontWithName:@"Assassin$" size:60];
     label.textAlignment = NSTextAlignmentCenter;
     label.text = @"You Are Dead";
-    [gameLayerView addSubview:label];
-    
+    [gameoverLayer addSubview:label];
+    gameoverLayer.layer.zPosition = 9999;
+    [self.view bringSubviewToFront:gameoverLayer];
+    //    gameLayerView.backgroundColor = [UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:0.8f];
+//    UILabel *label = [[UILabel alloc] init];
+//    label.frame = gameLayerView.frame;
+//    label.center = gameLayerView.center;
+//    label.alpha = 0.0f;
+//    label.font = [UIFont fontWithName:@"Assassin$" size:60];
+//    label.textAlignment = NSTextAlignmentCenter;
+//    label.text = @"You Are Dead";
+//    [gameLayerView addSubview:label];
+    [self.view addSubview:gameoverLayer];
     float ANIMATION_TIME = 4.0;
-    [UIView animateKeyframesWithDuration:ANIMATION_TIME
-                                   delay:0.0
-                                 options:UIViewKeyframeAnimationOptionLayoutSubviews
-                              animations:^{
-                                  [UIView addKeyframeWithRelativeStartTime:0.0
-                                                          relativeDuration:1.0
-                                                                animations:^{
-                                                                    gameLayerView.backgroundColor =
-                                                                    [UIColor colorWithRed:1.0f
-                                                                                    green:0.0f
-                                                                                     blue:0.0f
-                                                                                    alpha:0.8f];
-                                                                    ((UILabel*)label).alpha = 1.0f;
-                                                                    
-                                                                }];
-                              } completion:^(BOOL finished){
-                                  [self showRetryAlert];
-                              }];
+    [UIView animateWithDuration:ANIMATION_TIME delay:0.1 options:UIViewAnimationOptionCurveLinear animations:^(void){
+        gameoverLayer.alpha = 1.f;
+//        [self.view layoutIfNeeded];
+    }completion:^(BOOL finished){
+        NSLog(@"%@",finished?@"true":@"false");
+       [self showRetryAlert];
+    }];
+    while (true) {
+        NSLog(@"%f:",gameoverLayer.alpha);
+        if(gameoverLayer.alpha == 1.f){
+            break;
+        }
+    }
+//    [UIView animateKeyframesWithDuration:ANIMATION_TIME
+//                                   delay:0.5
+//                                 options:UIViewKeyframeAnimationOptionLayoutSubviews
+//                              animations:^{
+//                                  [UIView addKeyframeWithRelativeStartTime:0.0
+//                                                          relativeDuration:1.0
+//                                                                animations:^{
+//                                                                    gameLayerView.backgroundColor =
+//                                                                    [UIColor colorWithRed:1.0f
+//                                                                                    green:0.0f
+//                                                                                     blue:0.0f
+//                                                                                    alpha:0.8f];
+//                                                                    ((UILabel*)label).alpha = 1.0f;
+//                                                                    
+//                                                                }];
+//                              } completion:^(BOOL finished){
+//                                  [self showRetryAlert];
+//                              }];
+//    gameLayerView.backgroundColor = [UIColor colorWithRed:1.0f
+//                                                      green:0.0f
+//                                                       blue:0.0f
+//                                                      alpha:0.8f];
+//    NSLog(@"%@",NSStringFromCGRect(gameLayerView.frame));
+//    NSLog(@"%@",gameLayerView.backgroundColor);
+//    ((UILabel*)label).alpha = 1.0f;
+//    [self.view bringSubviewToFront:gameLayerView];
+//    [self showRetryAlert];
 }
 
 /* リトライアラート表示 */
@@ -1020,6 +1073,8 @@ typedef NS_ENUM(NSInteger, AttackType)
 
 /* リトライ */
 - (void)execRetry {
+    [gameoverLayer removeFromSuperview];
+    gameoverLayer = nil;
     [self clearGame];
     [self initGame];
     [self gameReadyGo];

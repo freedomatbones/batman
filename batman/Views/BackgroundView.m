@@ -83,6 +83,7 @@
 
 - (void)end {
     [bgMoveTimer invalidate];
+    bgMoveTimer = nil;
 }
 
 @end

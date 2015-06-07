@@ -58,12 +58,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "batman/Controllers/GameViewController.m"
-            timestampString = "454001976.496509"
+            timestampString = "455355999.859685"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "329"
-            endingLineNumber = "329"
+            startingLineNumber = "331"
+            endingLineNumber = "331"
             landmarkName = "-startThread"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "batman/Controllers/GameViewController.m"
+            timestampString = "455356573.237131"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "645"
+            endingLineNumber = "645"
+            landmarkName = "-createMyShot:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

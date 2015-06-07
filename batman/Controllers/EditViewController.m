@@ -64,11 +64,14 @@
     
     myPerson = [Person alloc];
     myPerson.name = @"badman";
-    myPerson.image = [UIImage imageNamed:@"img_batman_logo.png"];
+    myPerson.image = [UIImage imageNamed:@"batpod_kai.png"];
+    myPerson.weaponImgA = [UIImage imageNamed:@"img_new_batman_logo.png"];
+    myPerson.weaponImgB = [UIImage imageNamed:@"rpg7.png"];
     
     enemyPerson = [Person alloc];
     enemyPerson.name = _name.text;
     enemyPerson.image = _image.image;
+    enemyPerson.weaponImgA = [UIImage imageNamed:@"bullet.png"];
     if ([enemyPerson.name length] > 0 &&
         enemyPerson.image != nil &&
         gameConfig.difficulty >= 0) {
