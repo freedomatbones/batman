@@ -111,8 +111,8 @@
         case MAIN_BGM:
             soundConfig.filename = @"main_op_theme3";
             soundConfig.type = @"caf";
-            soundConfig.startTime = 0.0;
-            soundConfig.volume = 1.0;
+            soundConfig.startTime = 17.5;
+            soundConfig.volume = 1.2;
             break;
         case ED_BGM:
             soundConfig.filename = @"main_op_theme4";
