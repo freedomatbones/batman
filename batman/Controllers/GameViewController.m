@@ -264,6 +264,7 @@ typedef NS_ENUM(NSInteger, AttackType)
 // GameStart
 - (void)gameStart {
     // NSLog(@"gameStart: %@", [NSThread currentThread]);
+    //[backgroundView animationInit];
     gameLayerView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
     gameLayerView.alpha = 0;
     [self enableTouch];
@@ -316,6 +317,7 @@ typedef NS_ENUM(NSInteger, AttackType)
     NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
     
     [backgroundView start];
+    //[backgroundView animationStart];
     
     // timer 開始
     timeTimer = [NSTimer timerWithTimeInterval:1
@@ -364,6 +366,7 @@ typedef NS_ENUM(NSInteger, AttackType)
     // NSLog(@"endThread: %@", [NSThread currentThread]);
     [timeTimer invalidate];
     [backgroundView end];
+    // [backgroundView animationEnd];
     [myAttack1ProgressTimer invalidate];
     [myAttack2ProgressTimer invalidate];
     [myMoveTimer invalidate];
