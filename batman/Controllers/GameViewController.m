@@ -580,6 +580,12 @@ typedef NS_ENUM(NSInteger, AttackType)
 - (void)initMyObject {
     myIV = [[UIImageView alloc]initWithImage:_myPerson.image];
     
+    // debug用
+//    CALayer *layer = [myIV layer];
+//    [layer setMasksToBounds:YES];
+//    [layer setBorderWidth: 30.f];
+//    [layer setBorderColor:[[UIColor whiteColor] CGColor]];
+    
     myIV.userInteractionEnabled = YES;
     myIV.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 100);
     double scale = 0.4;
@@ -956,9 +962,14 @@ typedef NS_ENUM(NSInteger, AttackType)
     //NSLog(@"enemyShotsBefore%ld", enemyShots.count);
     NSMutableArray *removeUv = [[NSMutableArray alloc] init];
     [enemyShots enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(UIView *uv, NSUInteger idx, BOOL *stop) {
+        // debug用
+//        if(!(uv.center.y > self.view.frame.size.height*3/4)){
+//            uv.center = CGPointMake(uv.center.x, uv.center.y + 1);
+//        }
         uv.center = CGPointMake(uv.center.x, uv.center.y + 1);
+        
         // 光の輪っか分画像が大きいので調整してる
-        CGRect myTmpRect = CGRectMake(myIV.frame.origin.x+10, myIV.frame.origin.y+10, myIV.frame.size.width-20, myIV.frame.size.height-20);
+        CGRect myTmpRect = CGRectMake(myIV.frame.origin.x+15, myIV.frame.origin.y+25, myIV.frame.size.width-30, myIV.frame.size.height-40);
         if (CGRectIntersectsRect(uv.frame, myTmpRect)){
             //お互いが重なったときの処理をifの中に書きます
             [uv removeFromSuperview];
