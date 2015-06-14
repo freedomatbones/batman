@@ -42,7 +42,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     NSLog(@"ResultViewController:viewDidLoad");
-    [SoundPlayer playMusic:RESULT_BGM];
+    [SoundPlayer playMusic:WIN_BGM];
 }
 
 -(void)viewWillDisappear:(BOOL)animated{
@@ -65,7 +65,7 @@
                                 actionWithTitle:@"はい"
                                 style:UIAlertActionStyleDefault
                                 handler:^(UIAlertAction *action) {
-                                    [SoundPlayer playSE:SELECT_SE];
+                                    [SoundPlayer playSE:CANCEL_SE];
                                     [self performSegueWithIdentifier:@"segueTop" sender:self];
                                 }]];
     [alertController addAction:[UIAlertAction actionWithTitle:@"キャンセル" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {

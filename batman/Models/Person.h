@@ -14,5 +14,7 @@
 
 @property (nonatomic) NSString* name;
 @property (nonatomic) UIImage *image;
+@property (nonatomic) UIImage *weaponImgA;
+@property (nonatomic) UIImage *weaponImgB;
 
 @end

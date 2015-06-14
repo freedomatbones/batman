@@ -26,6 +26,7 @@ UIImagePickerControllerDelegate>{
     // スレッド管理系
     NSOperationQueue *queue;
     BackgroundView *backgroundView; // 背景のスレッドはBackgroundViewで管理
+    NSTimer *timeTimer;
     NSTimer *myAttack1ProgressTimer;
     NSTimer *myAttack2ProgressTimer;
     NSTimer *myMoveTimer;
@@ -41,7 +42,10 @@ UIImagePickerControllerDelegate>{
     NSMutableArray *enemyShots;
     
     // なんかあった時にレイヤーを設定する用のView
-    UIView *gameLayerView;
+     UIView *gameLayerView;
+    
+    //ゲームオーバView
+    UIView *gameoverLayer;
     
     HPView *hp;
     

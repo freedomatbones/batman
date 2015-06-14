@@ -61,6 +61,7 @@
 
 // 移動
 - (void)timerIntervalShowImage {
+    //NSLog(@"timerIntervalShowImage: %@", [NSThread currentThread]);
     if(self.frame.size.height <= bgY1){
         bgY1 = 0 - sizeHeight;
     }
@@ -76,6 +77,7 @@
 }
 
 - (void)start {
+    NSLog(@"start: %@", [NSThread currentThread]);
     bgMoveTimer = [NSTimer timerWithTimeInterval:0.005 target:self selector:@selector(timerIntervalShowImage) userInfo:nil repeats:YES];
     NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
     [runLoop addTimer:bgMoveTimer forMode:NSRunLoopCommonModes];
@@ -83,6 +85,7 @@
 
 - (void)end {
     [bgMoveTimer invalidate];
+    bgMoveTimer = nil;
 }
 
 @end

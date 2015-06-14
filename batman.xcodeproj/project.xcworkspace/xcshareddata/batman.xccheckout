@@ -5,13 +5,13 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>4C3F681A-30C6-45E1-A68B-9D7B9402840D</string>
+	<string>572892DE-7123-4F2D-9155-5A8E95433999</string>
 	<key>IDESourceControlProjectName</key>
 	<string>batman</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>5CC0249BC64023FE0C8BE67C789758B0BB2AE107</key>
-		<string>ssh://github.com/freedomatbones/batman.git</string>
+		<string>github.com:freedomatbones/batman.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>batman.xcodeproj</string>
@@ -21,7 +21,7 @@
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>ssh://github.com/freedomatbones/batman.git</string>
+	<string>github.com:freedomatbones/batman.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
