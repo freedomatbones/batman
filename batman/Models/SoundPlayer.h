@@ -52,6 +52,7 @@ typedef NS_ENUM(NSInteger, Sound)
 + (void)pauseMusic;
 + (void)stopMusic;
 + (void)playSE:(Sound)sound;
++ (void)stopSE;
 + (SoundPlayer *)getConfig:(Sound)music;
 
 @end

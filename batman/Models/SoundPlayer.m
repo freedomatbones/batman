@@ -93,6 +93,19 @@
 //    NSLog(@"seArray%ld", delegate.seArray.count);
 }
 
++ (void)stopSE {
+    AppDelegate* delegate = [[UIApplication sharedApplication] delegate];
+    [delegate.seArray enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(SoundPlayer *config, NSUInteger idx, BOOL *stop) {
+        if(config.audio.isPlaying){
+            config.audio.currentTime = 0;
+            [config.audio prepareToPlay];
+            config.audio = nil;
+            config = nil;
+        }
+    }];
+    delegate.seArray = [[NSMutableArray alloc] init];
+}
+
 -(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
     AppDelegate* delegate = [[UIApplication sharedApplication] delegate];
     __block NSUInteger delIdx = -1;
@@ -123,8 +136,8 @@
         case POSE_BGM:
             soundConfig.filename = @"tony_theme_mix";
             soundConfig.type = @"caf";
-            soundConfig.startTime = 0.0;
-            soundConfig.volume = 1.0;
+            soundConfig.startTime = 10.5;
+            soundConfig.volume = 1.5;
             break;
         case EDIT_BGM:
             soundConfig.filename = @"ievan_polkka";
@@ -139,10 +152,10 @@
             soundConfig.volume = 1.0;
             break;
         case SCORE_BGM:
-            soundConfig.filename = @"master";
+            soundConfig.filename = @"tony_theme_mix";
             soundConfig.type = @"caf";
-            soundConfig.startTime = 34.5;
-            soundConfig.volume = 0.4;
+            soundConfig.startTime = 10.5;
+            soundConfig.volume = 1.5;
             break;
         case NORMAL_BGM:
             soundConfig.filename = @"introduce_little_anarchy";

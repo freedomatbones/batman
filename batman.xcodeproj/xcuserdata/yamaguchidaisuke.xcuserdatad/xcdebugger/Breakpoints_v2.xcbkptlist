@@ -154,12 +154,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "batman/Models/SoundPlayer.m"
-            timestampString = "453396051.09636"
+            timestampString = "455963313.843254"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
-            landmarkName = "-audioPlayerDidFinishPlaying:successfully:"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "+stopSE"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

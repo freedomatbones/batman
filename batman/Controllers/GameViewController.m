@@ -194,11 +194,6 @@ typedef NS_ENUM(NSInteger, AttackType)
     [labelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     [gameView addSubview:labelButton];
-    
-    // timer 開始
-    timeTimer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(updateTimer:) userInfo:nil repeats:YES];
-    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
-    [runLoop addTimer:timeTimer forMode:NSRunLoopCommonModes];
 }
 
 /* タイマー更新 */
@@ -278,10 +273,12 @@ typedef NS_ENUM(NSInteger, AttackType)
 
 // pose押下メソッド
 -(void)pushButtonPose:(UIButton*)button{
+    [SoundPlayer stopSE];
     if ( poseStart == nil ) {
         [self endThread];
         [SoundPlayer pauseMusic];
         [SoundPlayer playSE:PAUSE_START_SE];
+        [SoundPlayer playSE:POSE_BGM];
         poseStart = [NSDate date];
 //        
 //        ///////////////////////
@@ -290,10 +287,12 @@ typedef NS_ENUM(NSInteger, AttackType)
         // addActionした順に左から右にボタンが配置されます
         [alertController addAction:[UIAlertAction actionWithTitle:@"TOPに戻る" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             //[self cancelPauseButtonPushed];
+            [SoundPlayer stopSE];
             [SoundPlayer playSE:PAUSE_END_SE];
             [self segueTop];
         }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"ゲームに戻る" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [SoundPlayer stopSE];
             [SoundPlayer playSE:PAUSE_END_SE];
             [self cancelPauseButtonPushed];
         }]];
@@ -317,6 +316,14 @@ typedef NS_ENUM(NSInteger, AttackType)
     NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
     
     [backgroundView start];
+    
+    // timer 開始
+    timeTimer = [NSTimer timerWithTimeInterval:1
+                                        target:self
+                                      selector:@selector(updateTimer:)
+                                      userInfo:nil
+                                       repeats:YES];
+    [runLoop addTimer:timeTimer forMode:NSRunLoopCommonModes];
     
     // 攻撃ボタンのプログレスバー用タイマー
     myAttack1ProgressTimer = [NSTimer timerWithTimeInterval:0.1
