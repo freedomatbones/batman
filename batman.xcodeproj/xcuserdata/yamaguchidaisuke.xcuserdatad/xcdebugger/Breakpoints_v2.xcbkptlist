@@ -191,8 +191,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "41"
             endingLineNumber = "41"
-            landmarkName = "filename"
-            landmarkType = "19">
+            landmarkName = "@interface SoundPlayer"
+            landmarkType = "2">
             <Locations>
                <Location
                   shouldBeEnabled = "No"

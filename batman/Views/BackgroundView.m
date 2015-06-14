@@ -77,7 +77,7 @@
 }
 
 - (void)start {
-    NSLog(@"start: %@", [NSThread currentThread]);
+    // NSLog(@"start: %@", [NSThread currentThread]);
     bgMoveTimer = [NSTimer timerWithTimeInterval:0.005 target:self selector:@selector(timerIntervalShowImage) userInfo:nil repeats:YES];
     NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
     [runLoop addTimer:bgMoveTimer forMode:NSRunLoopCommonModes];

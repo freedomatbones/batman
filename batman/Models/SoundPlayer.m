@@ -180,24 +180,6 @@
             soundConfig.startTime = 0.0;
             soundConfig.volume = 1.0;
             break;
-        case ATTACK_SE3:
-            soundConfig.filename = @"";
-            soundConfig.type = @"caf";
-            soundConfig.startTime = 0.0;
-            soundConfig.volume = 1.0;
-            break;
-        case ATTACK_SE4:
-            soundConfig.filename = @"";
-            soundConfig.type = @"caf";
-            soundConfig.startTime = 0.0;
-            soundConfig.volume = 1.0;
-            break;
-        case HIT_SE1:
-            soundConfig.filename = @"hit1";
-            soundConfig.type = @"caf";
-            soundConfig.startTime = 0.0;
-            soundConfig.volume = 1.0;
-            break;
         case SELECT_SE:
             soundConfig.filename = @"select";
             soundConfig.type = @"caf";
@@ -233,6 +215,48 @@
             soundConfig.type = @"caf";
             soundConfig.startTime = 0.3;
             soundConfig.volume = 0.8;
+            break;
+        case ENEMY_SHOT_SE:
+            soundConfig.filename = @"enemy_shot";
+            soundConfig.type = @"caf";
+            soundConfig.startTime = 0.0;
+            soundConfig.volume = 0.8;
+            break;
+        case LOW_HIT_SE:
+            soundConfig.filename = @"low_hit";
+            soundConfig.type = @"caf";
+            soundConfig.startTime = 0.0;
+            soundConfig.volume = 1.0;
+            break;
+        case MIDDLE_HIT_SE:
+            soundConfig.filename = @"middle_hit";
+            soundConfig.type = @"caf";
+            soundConfig.startTime = 0.0;
+            soundConfig.volume = 1.0;
+            break;
+        case HIGH_HIT_SE:
+            soundConfig.filename = @"high_hit";
+            soundConfig.type = @"caf";
+            soundConfig.startTime = 0.0;
+            soundConfig.volume = 1.0;
+            break;
+        case KNIFE_HIT_SE:
+            soundConfig.filename = @"knife_hit";
+            soundConfig.type = @"caf";
+            soundConfig.startTime = 0.0;
+            soundConfig.volume = 1.0;
+            break;
+        case KO_SE:
+            soundConfig.filename = @"ko";
+            soundConfig.type = @"caf";
+            soundConfig.startTime = 0.0;
+            soundConfig.volume = 1.0;
+            break;
+        case HIT_BOMB_SE:
+            soundConfig.filename = @"hit_bomb";
+            soundConfig.type = @"caf";
+            soundConfig.startTime = 0.0;
+            soundConfig.volume = 2.0;
             break;
         default:
             break;
