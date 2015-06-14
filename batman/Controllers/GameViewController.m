@@ -1014,8 +1014,8 @@ typedef NS_ENUM(NSInteger, AttackType)
 /* ランダムに、移動先座標を決定する */
 - (CGPoint)randomCGPointCenter:(CGRect) rect {
     double movedWidth = self.view.frame.size.width;
-    double gridOne = movedWidth / GRID_X_LENGTH;
-    int moveGrid = (int)arc4random_uniform(GRID_X_LENGTH); // 0~GRID_X_LENGTH-1
+    double gridOne = movedWidth / (GRID_X_LENGTH*2);
+    int moveGrid = (int)arc4random_uniform(GRID_X_LENGTH*2-1); // 0~GRID_X_LENGTH-1
     CGPoint movePoint = CGPointMake(gridOne*moveGrid, rect.origin.y);
     CGPoint centerPoint = CGPointMake(movePoint.x + (rect.size.width/2),
                                       rect.origin.y + (rect.size.height/2));
