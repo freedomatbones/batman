@@ -102,6 +102,8 @@ typedef NS_ENUM(NSInteger, AttackType)
     timeStart = nil; // ゲーム開始時刻
     poseStart = nil; // ポーズ開始時刻 nilならタイムしてない
     labelButton = nil;
+    
+    gameOver = false;
 }
 
 
@@ -800,7 +802,7 @@ typedef NS_ENUM(NSInteger, AttackType)
 - (void)startEnemyShots {
     // NSLog(@"startEnemyShots: %@", [NSThread currentThread]);
     // 自分攻撃オブジェクト用タイマー設定(折り返しの度に再設定される)
-    enemyShotTimer = [NSTimer timerWithTimeInterval:0.003
+    enemyShotTimer = [NSTimer timerWithTimeInterval:0.006
                                                       target:self
                                                     selector:@selector(moveEnemyShots:)
                                                     userInfo:nil
@@ -944,7 +946,7 @@ typedef NS_ENUM(NSInteger, AttackType)
             }
             dispatch_async(dispatch_get_main_queue(), ^{
                 hp.enemyPV.progress = hp.enemyPV.progress - (uv.tag / 100.0);
-                if ( hp.enemyPV.progress <= 0 ) {
+                if ( hp.enemyPV.progress <= 0 && !gameOver ) {
                     [self segueResult];// ここに実行したいコード
                 }
             });
@@ -969,7 +971,7 @@ typedef NS_ENUM(NSInteger, AttackType)
 //        if(!(uv.center.y > self.view.frame.size.height*3/4)){
 //            uv.center = CGPointMake(uv.center.x, uv.center.y + 1);
 //        }
-        uv.center = CGPointMake(uv.center.x, uv.center.y + 1);
+        uv.center = CGPointMake(uv.center.x, uv.center.y + 3);
         
         // 光の輪っか分画像が大きいので調整してる
         CGRect myTmpRect = CGRectMake(myIV.frame.origin.x+15, myIV.frame.origin.y+25, myIV.frame.size.width-30, myIV.frame.size.height-40);
@@ -981,7 +983,7 @@ typedef NS_ENUM(NSInteger, AttackType)
                 [SoundPlayer playSE:KNIFE_HIT_SE] : [SoundPlayer playSE:HIGH_HIT_SE];
             dispatch_async(dispatch_get_main_queue(), ^{
                 hp.myPV.progress = hp.myPV.progress - (uv.tag / 100.0);
-                if ( hp.myPV.progress <= 0 ) {
+                if ( hp.myPV.progress <= 0 && !gameOver ) {
                     // NSLog(@"hp.myPV.progress <= 0: %@", [NSThread currentThread]);
                     [self showYouAreDeadLayer];// ここに実行したいコード
                 }
@@ -1034,13 +1036,10 @@ typedef NS_ENUM(NSInteger, AttackType)
 
 /* ゲームオーバーレイヤー表示 */
 - (void)showYouAreDeadLayer {
+    gameOver = true;
     // NSLog(@"thread: %@", [NSThread currentThread]);
     // NSLog(@"showYouAreDeadLayer");
-    if (timeStart == nil) {
-        return;
-    }
-                   
-    timeStart = nil; // ゲーム終了の印
+
     [self endThread];
     [self disabledTouch];
     ////////////////////////////////
@@ -1181,16 +1180,13 @@ typedef NS_ENUM(NSInteger, AttackType)
 
 // Result画面へ遷移
 - (void)segueResult {
-    if (timeStart == nil) {
-        return;
-    }
+    gameOver = true;
     [SoundPlayer stopMusic];
     score = [[Score alloc] init];
     NSTimeInterval timeInterval = [timeStart timeIntervalSinceNow];
     NSTimeInterval gameInterval = timeInterval - poseInterval;
     score.time = -gameInterval;
     score.difficulty = self.gameConfig.difficulty;
-    timeStart = nil; // ゲーム終了の印
     [self endThread];
     [self disabledTouch];
     ////////////////////////////////

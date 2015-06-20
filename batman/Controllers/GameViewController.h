@@ -64,6 +64,9 @@ UIImagePickerControllerDelegate>{
     NSDate *poseStart; // ポーズ開始時刻 nilならタイムしてない
     NSTimeInterval poseInterval; // ポーズしていた時間
     UIButton *labelButton;
+    
+    // ゲーム終了
+    BOOL gameOver;
 }
 
 // 画面遷移前に受け取る

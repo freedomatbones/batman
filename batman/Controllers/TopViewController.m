@@ -50,7 +50,7 @@
         gameConfig.sound = NORMAL_BGM;
         
         myPerson = [Person alloc];
-        myPerson.name = @"badman";
+        myPerson.name = @"BADMAN";
         myPerson.image = [UIImage imageNamed:@"batpod_kai.png"];
         myPerson.weaponImgA = [UIImage imageNamed:@"img_new_batman_logo.png"];
         myPerson.weaponImgB = [UIImage imageNamed:@"rpg7.png"];
@@ -81,7 +81,7 @@
         gameConfig.sound = HARD_BGM;
         
         myPerson = [Person alloc];
-        myPerson.name = @"badman";
+        myPerson.name = @"BADMAN";
         myPerson.image = [UIImage imageNamed:@"batpod_kai.png"];
         myPerson.weaponImgA = [UIImage imageNamed:@"candy.png"];
         myPerson.weaponImgB = [UIImage imageNamed:@"hana.png"];
