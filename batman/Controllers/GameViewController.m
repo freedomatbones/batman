@@ -29,8 +29,9 @@ const int GRID_X_LENGTH = 5;
 
 typedef NS_ENUM(NSInteger, AttackType)
 {
-    LIGHT = 3,
-    STRONG = 20,
+    LIGHT = 1,
+    MIDDLE = 10,
+    STRONG = 30,
     KILL = 100
 };
 
@@ -193,11 +194,6 @@ typedef NS_ENUM(NSInteger, AttackType)
     [labelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
     [gameView addSubview:labelButton];
-    
-    // timer 開始
-    timeTimer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(updateTimer:) userInfo:nil repeats:YES];
-    NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
-    [runLoop addTimer:timeTimer forMode:NSRunLoopCommonModes];
 }
 
 /* タイマー更新 */
@@ -267,7 +263,8 @@ typedef NS_ENUM(NSInteger, AttackType)
 
 // GameStart
 - (void)gameStart {
-    NSLog(@"gameStart: %@", [NSThread currentThread]);
+    // NSLog(@"gameStart: %@", [NSThread currentThread]);
+    //[backgroundView animationInit];
     gameLayerView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0f];
     gameLayerView.alpha = 0;
     [self enableTouch];
@@ -277,10 +274,12 @@ typedef NS_ENUM(NSInteger, AttackType)
 
 // pose押下メソッド
 -(void)pushButtonPose:(UIButton*)button{
+    [SoundPlayer stopSE];
     if ( poseStart == nil ) {
         [self endThread];
         [SoundPlayer pauseMusic];
         [SoundPlayer playSE:PAUSE_START_SE];
+        [SoundPlayer playSE:POSE_BGM];
         poseStart = [NSDate date];
 //        
 //        ///////////////////////
@@ -288,10 +287,14 @@ typedef NS_ENUM(NSInteger, AttackType)
         
         // addActionした順に左から右にボタンが配置されます
         [alertController addAction:[UIAlertAction actionWithTitle:@"TOPに戻る" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            [self cancelPauseButtonPushed];
+            //[self cancelPauseButtonPushed];
+            [SoundPlayer stopSE];
+            [SoundPlayer playSE:PAUSE_END_SE];
             [self segueTop];
         }]];
         [alertController addAction:[UIAlertAction actionWithTitle:@"ゲームに戻る" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+            [SoundPlayer stopSE];
+            [SoundPlayer playSE:PAUSE_END_SE];
             [self cancelPauseButtonPushed];
         }]];
         
@@ -302,7 +305,6 @@ typedef NS_ENUM(NSInteger, AttackType)
 // ポーズ解除
 - (void)cancelPauseButtonPushed {
     [SoundPlayer pauseMusic];
-    [SoundPlayer playSE:PAUSE_END_SE];
     NSTimeInterval tmpPoseInterval = [poseStart timeIntervalSinceNow];
     poseInterval += tmpPoseInterval;
     poseStart = nil;
@@ -315,6 +317,15 @@ typedef NS_ENUM(NSInteger, AttackType)
     NSRunLoop *runLoop = [NSRunLoop currentRunLoop];
     
     [backgroundView start];
+    //[backgroundView animationStart];
+    
+    // timer 開始
+    timeTimer = [NSTimer timerWithTimeInterval:1
+                                        target:self
+                                      selector:@selector(updateTimer:)
+                                      userInfo:nil
+                                       repeats:YES];
+    [runLoop addTimer:timeTimer forMode:NSRunLoopCommonModes];
     
     // 攻撃ボタンのプログレスバー用タイマー
     myAttack1ProgressTimer = [NSTimer timerWithTimeInterval:0.1
@@ -352,9 +363,10 @@ typedef NS_ENUM(NSInteger, AttackType)
 }
 
 - (void)endThread {
-    NSLog(@"endThread: %@", [NSThread currentThread]);
+    // NSLog(@"endThread: %@", [NSThread currentThread]);
     [timeTimer invalidate];
     [backgroundView end];
+    // [backgroundView animationEnd];
     [myAttack1ProgressTimer invalidate];
     [myAttack2ProgressTimer invalidate];
     [myMoveTimer invalidate];
@@ -368,7 +380,7 @@ typedef NS_ENUM(NSInteger, AttackType)
            || [myMoveTimer isValid]
            || [enemyMoveTimer isValid] )
     {
-        NSLog(@"止まってない");
+        // NSLog(@"止まってない");
     }
     myAttack1ProgressTimer = nil;
     myAttack2ProgressTimer = nil;
@@ -564,12 +576,18 @@ typedef NS_ENUM(NSInteger, AttackType)
 }
 
 - (void)shotTapped2 {
-    [self createMyShot:STRONG];
+    [self createMyShot:MIDDLE];
 }
 
 /* 自分を表示させる */
 - (void)initMyObject {
     myIV = [[UIImageView alloc]initWithImage:_myPerson.image];
+    
+    // debug用
+//    CALayer *layer = [myIV layer];
+//    [layer setMasksToBounds:YES];
+//    [layer setBorderWidth: 30.f];
+//    [layer setBorderColor:[[UIColor whiteColor] CGColor]];
     
     myIV.userInteractionEnabled = YES;
     myIV.center = CGPointMake(self.view.center.x, self.view.frame.size.height - 100);
@@ -689,7 +707,7 @@ typedef NS_ENUM(NSInteger, AttackType)
         uv.tag = attackType; // 攻撃力;
         [gameView addSubview:uv];
         [myShots addObject: uv];
-    } else if (attackType == STRONG) {
+    } else if (attackType == MIDDLE) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.0 * NSEC_PER_SEC),dispatch_get_current_queue(), ^{
             [SoundPlayer playSE:ATTACK_SE2];
             UIImageView *uv = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:[self.myPerson.weaponImgB CGImage]]];
@@ -762,7 +780,7 @@ typedef NS_ENUM(NSInteger, AttackType)
     [myShotTimer invalidate];
     while ([myShotTimer isValid])
     {
-        NSLog(@"myShotTimer 止まってない");
+        // NSLog(@"myShotTimer 止まってない");
     }
     myShotTimer = nil;
     
@@ -780,7 +798,7 @@ typedef NS_ENUM(NSInteger, AttackType)
 
 /* 敵弾丸動作開始 */
 - (void)startEnemyShots {
-    NSLog(@"startEnemyShots: %@", [NSThread currentThread]);
+    // NSLog(@"startEnemyShots: %@", [NSThread currentThread]);
     // 自分攻撃オブジェクト用タイマー設定(折り返しの度に再設定される)
     enemyShotTimer = [NSTimer timerWithTimeInterval:0.003
                                                       target:self
@@ -807,7 +825,7 @@ typedef NS_ENUM(NSInteger, AttackType)
     [enemyShotTimer invalidate];
     while ([enemyShotTimer isValid])
     {
-        NSLog(@"myShotTimer 止まってない");
+        // NSLog(@"myShotTimer 止まってない");
     }
     enemyShotTimer = nil;
     
@@ -823,6 +841,7 @@ typedef NS_ENUM(NSInteger, AttackType)
 
 /* 敵が攻撃 */
 - (void)createEnemyShot {
+    [SoundPlayer playSE:ENEMY_SHOT_SE];
     UIImageView *uv = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:[self.enemyPerson.weaponImgA CGImage]]];
     
     uv.clipsToBounds = YES;
@@ -876,21 +895,33 @@ typedef NS_ENUM(NSInteger, AttackType)
 - (void)moveEnemy:(NSTimer *)timer {
     // 目的地なし
     if (enemyDestination == nil) {
+        // NSLog(@"enemyDestination == nil");
         CGPoint moveCenterTmp = [self randomCGPointCenter:enemyIV.frame];
         enemyDestination = [NSValue valueWithCGPoint:moveCenterTmp];
     }
     CGPoint moveCenter = [enemyDestination CGPointValue];
     double moveCenterX = moveCenter.x;
     
+    // 目的地が同じなら無効
     if (floor(moveCenterX) == floor(enemyIV.center.x)) {
-        enemyIV.center = CGPointMake(moveCenterX, enemyIV.center.y);
         enemyDestination = nil;
-        [self createEnemyShot];
-    }else if (moveCenterX < enemyIV.center.x) {
+        return;
+    }
+    
+    // 移動
+    if (moveCenterX < enemyIV.center.x) {
         enemyIV.center = CGPointMake(enemyIV.center.x - 1, enemyIV.center.y);
     }else if (enemyIV.center.x < moveCenterX) {
         enemyIV.center = CGPointMake(enemyIV.center.x + 1, enemyIV.center.y);
     }else{
+//        enemyDestination = nil;
+//        [self createEnemyShot];
+    }
+    
+    // 目的地に到達したら攻撃
+    if (floor(moveCenterX) == floor(enemyIV.center.x)) {
+        // NSLog(@"floor(moveCenterX) == floor(enemyIV.center.x)");
+        enemyIV.center = CGPointMake(moveCenterX, enemyIV.center.y);
         enemyDestination = nil;
         [self createEnemyShot];
     }
@@ -905,25 +936,24 @@ typedef NS_ENUM(NSInteger, AttackType)
         if (CGRectIntersectsRect(uv.frame, enemyIV.frame)){
             [uv removeFromSuperview];
             [removeUv addObject:uv];
-            hp.enemyPV.progress = hp.enemyPV.progress - (uv.tag / 100.0);
-            if ( hp.enemyPV.progress <= 0 ) {
-                //[self segueResult];
-                dispatch_async(
-                               dispatch_get_main_queue(),
-                               ^{
-                                   [self segueResult];// ここに実行したいコード
-                               }
-                               );
-
+            if ((hp.enemyPV.progress - (uv.tag / 100.0)) <= 0 ) {
+                [SoundPlayer playSE:KO_SE];
+            } else {
+              uv.tag == LIGHT ?
+                  [SoundPlayer playSE:LOW_HIT_SE] : [SoundPlayer playSE:HIT_BOMB_SE];
             }
-//            // スレッドパラメータを作成
-//            NSMutableDictionary* param = [[NSMutableDictionary alloc]init];
-//            [param setObject:[NSValue valueWithCGPoint:uv.center] forKey:@"point"];
-//            [NSThread detachNewThreadSelector:@selector(enemyEmitterStart:) toTarget:self withObject:param];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                hp.enemyPV.progress = hp.enemyPV.progress - (uv.tag / 100.0);
+                if ( hp.enemyPV.progress <= 0 ) {
+                    [self segueResult];// ここに実行したいコード
+                }
+            });
+            uv = nil;
         }
         if (!CGRectContainsPoint(self.view.frame, uv.frame.origin)){
             [removeUv addObject:uv];
             [uv removeFromSuperview];
+            uv = nil;
         }
     }];
     
@@ -935,40 +965,37 @@ typedef NS_ENUM(NSInteger, AttackType)
     //NSLog(@"enemyShotsBefore%ld", enemyShots.count);
     NSMutableArray *removeUv = [[NSMutableArray alloc] init];
     [enemyShots enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(UIView *uv, NSUInteger idx, BOOL *stop) {
+        // debug用
+//        if(!(uv.center.y > self.view.frame.size.height*3/4)){
+//            uv.center = CGPointMake(uv.center.x, uv.center.y + 1);
+//        }
         uv.center = CGPointMake(uv.center.x, uv.center.y + 1);
+        
         // 光の輪っか分画像が大きいので調整してる
-        CGRect myTmpRect = CGRectMake(myIV.frame.origin.x+10, myIV.frame.origin.y+10, myIV.frame.size.width-20, myIV.frame.size.height-20);
+        CGRect myTmpRect = CGRectMake(myIV.frame.origin.x+15, myIV.frame.origin.y+25, myIV.frame.size.width-30, myIV.frame.size.height-40);
         if (CGRectIntersectsRect(uv.frame, myTmpRect)){
-            //お互いが重なったときの処理をifの中に書きます。
+            //お互いが重なったときの処理をifの中に書きます
             [uv removeFromSuperview];
             [removeUv addObject:uv];
-            hp.myPV.progress = hp.myPV.progress - (uv.tag / 100.0);
-            if ( hp.myPV.progress <= 0 ) {
-                NSLog(@"hp.myPV.progress <= 0: %@", [NSThread currentThread]);
-               // [self showYouAreDeadLayer];
-                dispatch_async(
-                               dispatch_get_main_queue(),
-                               ^{
-                                   
-                                   [self showYouAreDeadLayer];// ここに実行したいコード
-                               }
-                               );
-//                [self performSelectorOnMainThread:@selector(showYouAreDeadLayer) withObject:nil waitUntilDone:YES];
-            }
-            
-//            // スレッドパラメータを作成
-//            NSMutableDictionary* param = [[NSMutableDictionary alloc]init];
-//            [param setObject:[NSValue valueWithCGPoint:uv.center] forKey:@"point"];
-//            [NSThread detachNewThreadSelector:@selector(myEmitterStart:) toTarget:self withObject:param];
+            uv.tag == KILL ?
+                [SoundPlayer playSE:KNIFE_HIT_SE] : [SoundPlayer playSE:HIGH_HIT_SE];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                hp.myPV.progress = hp.myPV.progress - (uv.tag / 100.0);
+                if ( hp.myPV.progress <= 0 ) {
+                    // NSLog(@"hp.myPV.progress <= 0: %@", [NSThread currentThread]);
+                    [self showYouAreDeadLayer];// ここに実行したいコード
+                }
+            });
+            uv = nil;
         }
         if (!CGRectContainsPoint(self.view.frame, uv.frame.origin)){
             [removeUv addObject:uv];
             [uv removeFromSuperview];
+            uv = nil;
         }
     }];
     
     [enemyShots removeObjectsInArray:removeUv];
-    //    NSLog(@"enemyShotsAfter%ld", enemyShots.count);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -987,8 +1014,8 @@ typedef NS_ENUM(NSInteger, AttackType)
 /* ランダムに、移動先座標を決定する */
 - (CGPoint)randomCGPointCenter:(CGRect) rect {
     double movedWidth = self.view.frame.size.width;
-    double gridOne = movedWidth / GRID_X_LENGTH;
-    int moveGrid = (int)arc4random_uniform(GRID_X_LENGTH); // 0~GRID_X_LENGTH-1
+    double gridOne = movedWidth / (GRID_X_LENGTH*2);
+    int moveGrid = (int)arc4random_uniform(GRID_X_LENGTH*2-1); // 0~GRID_X_LENGTH-1
     CGPoint movePoint = CGPointMake(gridOne*moveGrid, rect.origin.y);
     CGPoint centerPoint = CGPointMake(movePoint.x + (rect.size.width/2),
                                       rect.origin.y + (rect.size.height/2));
@@ -1007,11 +1034,12 @@ typedef NS_ENUM(NSInteger, AttackType)
 
 /* ゲームオーバーレイヤー表示 */
 - (void)showYouAreDeadLayer {
-    NSLog(@"thread: %@", [NSThread currentThread]);
-    NSLog(@"showYouAreDeadLayer");
+    // NSLog(@"thread: %@", [NSThread currentThread]);
+    // NSLog(@"showYouAreDeadLayer");
     if (timeStart == nil) {
         return;
     }
+                   
     timeStart = nil; // ゲーム終了の印
     [self endThread];
     [self disabledTouch];
@@ -1023,7 +1051,7 @@ typedef NS_ENUM(NSInteger, AttackType)
     _progressView1 = nil;
     _progressView2 = nil;
     ////////////////////////////////
-    [SoundPlayer playMusic:LOSE_BGM];
+    
     gameoverLayer = [[UIView alloc] initWithFrame:self.view.frame];
     gameoverLayer.backgroundColor = [UIColor colorWithRed:1.0f green:0.0f blue:0.0f alpha:0.8f];
     gameoverLayer.alpha = 0;
@@ -1047,20 +1075,25 @@ typedef NS_ENUM(NSInteger, AttackType)
 //    label.text = @"You Are Dead";
 //    [gameLayerView addSubview:label];
     [self.view addSubview:gameoverLayer];
-    float ANIMATION_TIME = 4.0;
-    [UIView animateWithDuration:ANIMATION_TIME delay:0.1 options:UIViewAnimationOptionCurveLinear animations:^(void){
-        gameoverLayer.alpha = 1.f;
-//        [self.view layoutIfNeeded];
-    }completion:^(BOOL finished){
-        NSLog(@"%@",finished?@"true":@"false");
-       [self showRetryAlert];
-    }];
-    while (true) {
-        NSLog(@"%f:",gameoverLayer.alpha);
-        if(gameoverLayer.alpha == 1.f){
-            break;
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.25 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+        
+        [SoundPlayer playMusic:LOSE_BGM];
+        
+        float ANIMATION_TIME = 4.0;
+        [UIView animateWithDuration:ANIMATION_TIME delay:0.1 options:UIViewAnimationOptionCurveLinear animations:^(void){
+            gameoverLayer.alpha = 1.f;
+            //        [self.view layoutIfNeeded];
+        }completion:^(BOOL finished){
+            // NSLog(@"%@",finished?@"true":@"false");
+            [self showRetryAlert];
+        }];
+        while (true) {
+            // NSLog(@"%f:",gameoverLayer.alpha);
+            if(gameoverLayer.alpha == 1.f){
+                break;
+            }
         }
-    }
+    });
 //    [UIView animateKeyframesWithDuration:ANIMATION_TIME
 //                                   delay:0.5
 //                                 options:UIViewKeyframeAnimationOptionLayoutSubviews
@@ -1133,7 +1166,7 @@ typedef NS_ENUM(NSInteger, AttackType)
 
 /* TOPに戻る */
 - (void)segueTop {
-    
+    [self clearGame];
     [self performSegueWithIdentifier:@"segueTop" sender:self];
 }
 
@@ -1151,7 +1184,7 @@ typedef NS_ENUM(NSInteger, AttackType)
     if (timeStart == nil) {
         return;
     }
-    [SoundPlayer playMusic:WIN_BGM];
+    [SoundPlayer stopMusic];
     score = [[Score alloc] init];
     NSTimeInterval timeInterval = [timeStart timeIntervalSinceNow];
     NSTimeInterval gameInterval = timeInterval - poseInterval;
@@ -1191,13 +1224,20 @@ typedef NS_ENUM(NSInteger, AttackType)
     //    label.text = @"You Are Dead";
     //    [gameLayerView addSubview:label];
     [self.view addSubview:gameoverLayer];
-    float ANIMATION_TIME = 6.2;
-    [UIView animateWithDuration:ANIMATION_TIME delay:0.1 options:UIViewAnimationOptionCurveLinear animations:^(void){
-        gameoverLayer.alpha = 1.f;
-        //        [self.view layoutIfNeeded];
-    }completion:^(BOOL finished){
-        [self performSegueWithIdentifier:@"segueResult" sender:self];
-    }];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.3 * NSEC_PER_SEC), dispatch_get_current_queue(), ^{
+
+        [SoundPlayer playMusic:WIN_BGM];
+    
+        float ANIMATION_TIME = 6.3;
+        [UIView animateWithDuration:ANIMATION_TIME delay:0.1 options:UIViewAnimationOptionCurveLinear animations:^(void){
+            gameoverLayer.alpha = 1.f;
+            //        [self.view layoutIfNeeded];
+        }completion:^(BOOL finished){
+            [self performSegueWithIdentifier:@"segueResult" sender:self];
+        }];
+        
+    });
 }
 
 /* ダメージエフェクト設定 */////////////////////////////////////////////////////////

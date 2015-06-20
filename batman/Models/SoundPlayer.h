@@ -26,15 +26,19 @@ typedef NS_ENUM(NSInteger, Sound)
     
     ATTACK_SE1,
     ATTACK_SE2,
-    ATTACK_SE3,
-    ATTACK_SE4,
-    HIT_SE1,
     SELECT_SE,
     CANCEL_SE,
     TAB_SE,
     DELETE_SE,
     PAUSE_START_SE,
-    PAUSE_END_SE
+    PAUSE_END_SE,
+    ENEMY_SHOT_SE,
+    LOW_HIT_SE,
+    MIDDLE_HIT_SE,
+    HIGH_HIT_SE,
+    KNIFE_HIT_SE,
+    KO_SE,
+    HIT_BOMB_SE
 };
 
 @property (nonatomic) Sound sound;
@@ -48,6 +52,7 @@ typedef NS_ENUM(NSInteger, Sound)
 + (void)pauseMusic;
 + (void)stopMusic;
 + (void)playSE:(Sound)sound;
++ (void)stopSE;
 + (SoundPlayer *)getConfig:(Sound)music;
 
 @end

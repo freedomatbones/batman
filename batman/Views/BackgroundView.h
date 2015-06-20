@@ -24,4 +24,8 @@
 - (void)start;
 - (void)end;
 
+- (void)animationInit;
+- (void)animationStart;
+- (void)animationEnd;
+
 @end
