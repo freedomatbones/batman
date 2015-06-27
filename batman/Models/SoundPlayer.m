@@ -90,7 +90,27 @@
     [config.audio play];
     
     [delegate.seArray addObject:config];
+    
+    [self cleanSE];
+    
+    //NSLog(@"%ld", [delegate.seArray count]);
 //    NSLog(@"seArray%ld", delegate.seArray.count);
+}
+
++ (void)cleanSE {
+    AppDelegate* delegate = [[UIApplication sharedApplication] delegate];
+
+//    NSMutableIndexSet* deleteIndexes = [[NSMutableIndexSet alloc] init];
+//    [delegate.seArray enumerateObjectsWithOptions:NSEnumerationConcurrent usingBlock:^(SoundPlayer *config, NSUInteger idx, BOOL *stop) {
+//        if(!config.audio.isPlaying){
+//            [deleteIndexes addIndex:idx];
+//        }
+//    }];
+//    [delegate.seArray removeObjectsAtIndexes:deleteIndexes];
+    
+    if([delegate.seArray count] > 30){
+        [delegate.seArray removeObjectAtIndex:0];
+    }
 }
 
 + (void)stopSE {
@@ -99,11 +119,11 @@
         if(config.audio.isPlaying){
             config.audio.currentTime = 0;
             [config.audio prepareToPlay];
-            config.audio = nil;
-            config = nil;
         }
+        config.audio = nil;
+        config = nil;
     }];
-    delegate.seArray = [[NSMutableArray alloc] init];
+    [delegate.seArray removeAllObjects];
 }
 
 -(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{

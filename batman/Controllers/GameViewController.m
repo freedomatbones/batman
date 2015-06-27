@@ -802,7 +802,7 @@ typedef NS_ENUM(NSInteger, AttackType)
 - (void)startEnemyShots {
     // NSLog(@"startEnemyShots: %@", [NSThread currentThread]);
     // 自分攻撃オブジェクト用タイマー設定(折り返しの度に再設定される)
-    enemyShotTimer = [NSTimer timerWithTimeInterval:0.006
+    enemyShotTimer = [NSTimer timerWithTimeInterval:0.01
                                                       target:self
                                                     selector:@selector(moveEnemyShots:)
                                                     userInfo:nil
@@ -971,7 +971,8 @@ typedef NS_ENUM(NSInteger, AttackType)
 //        if(!(uv.center.y > self.view.frame.size.height*3/4)){
 //            uv.center = CGPointMake(uv.center.x, uv.center.y + 1);
 //        }
-        uv.center = CGPointMake(uv.center.x, uv.center.y + 3);
+        int y = self.gameConfig.difficulty == HARD ? 8 : 6;
+        uv.center = CGPointMake(uv.center.x, uv.center.y + y);
         
         // 光の輪っか分画像が大きいので調整してる
         CGRect myTmpRect = CGRectMake(myIV.frame.origin.x+15, myIV.frame.origin.y+25, myIV.frame.size.width-30, myIV.frame.size.height-40);

@@ -87,7 +87,6 @@
 		1FE3AF481AFE0211002AE9EE /* SoundPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FE3AF471AFE0211002AE9EE /* SoundPlayer.m */; };
 		1FE3AF491AFE841B002AE9EE /* Assassin$.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1FE3AF451AFDD266002AE9EE /* Assassin$.ttf */; };
 		1FEF26A61AFE8DF800E23CE7 /* statue_of_liberty.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FEF26A41AFE8DF800E23CE7 /* statue_of_liberty.png */; };
-		1FFB742E1B1061C50076C35D /* a-watanabe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1FFB742D1B1061C50076C35D /* a-watanabe.jpg */; };
 		1FFB74301B1061EB0076C35D /* a-watanabe.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1FFB742F1B1061EB0076C35D /* a-watanabe.jpg */; };
 /* End PBXBuildFile section */
 
@@ -488,7 +487,7 @@
 		1F9F77B11AAAB4B200050BD0 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0630;
 				ORGANIZATIONNAME = "山口 大輔";
 				TargetAttributes = {
 					1F9F77B81AAAB4B200050BD0 = {
@@ -566,7 +565,6 @@
 				1FEF26A61AFE8DF800E23CE7 /* statue_of_liberty.png in Resources */,
 				1FE088391AFEAB7A0072E70F /* Main.storyboard in Resources */,
 				1FFB74301B1061EB0076C35D /* a-watanabe.jpg in Resources */,
-				1FFB742E1B1061C50076C35D /* a-watanabe.jpg in Resources */,
 				1F5EB80F1B24091A00486AF2 /* batpod_kai.png in Resources */,
 				1FBF7FB21AF903BF00D9AD9F /* img_d-pad.png in Resources */,
 				1F47B44A1B2C196400E76A8F /* Icon@2x.png in Resources */,
